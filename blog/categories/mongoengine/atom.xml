@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: mongoengine | Ross Lawley]]></title>
+  <link href="http://rozza.github.com/blog/categories/mongoengine/atom.xml" rel="self"/>
+  <link href="http://rozza.github.com/"/>
+  <updated>2012-11-16T14:14:23+00:00</updated>
+  <id>http://rozza.github.com/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Flask-MongoEngine extension released!]]></title>
+    <link href="http://rozza.github.com/flask-mongoengine-extension-released/"/>
+    <updated>2012-05-18T00:00:00+00:00</updated>
+    <id>http://rozza.github.com/flask-mongoengine-extension-released</id>
+    <content type="html"><![CDATA[<p>After using <a href="http://flask.pocoo.org" title="Flask framework" target="_blank">Flask</a>&nbsp;and <a href="http://mongoengine.org" title="mongoengine - python mongo odm" target="_blank">MongoEngine</a> together for sometime, I've finally got round to publishing the extension on pypi - installing is simple: pip install flask-mongoengine. &nbsp;The documentation is here:&nbsp;<a href="http://readthedocs.org/docs/flask-mongoengine">http://readthedocs.org/docs/flask-mongoengine</a></p>
+
+
+<p>Configuration is simple</p>
+
+
+<p><script src="https://gist.github.com/2724682.js"></script></p>
+
+
+<p>Full <a href="http://wtforms.simplecodes.com/docs/dev/">WTForms</a> support including ModelForms and built in <a href="http://flask-debugtoolbar.readthedocs.org/">Flask-Debugtoolbar</a> support:</p>
+
+
+<p><img src="http://rozza.github.com/images/debugtoolbar.png" /></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MongoEngine 0.6 Released!]]></title>
+    <link href="http://rozza.github.com/mongoengine-06-released/"/>
+    <updated>2012-03-05T00:00:00+00:00</updated>
+    <id>http://rozza.github.com/mongoengine-06-released</id>
+    <content type="html"><![CDATA[<p>Sorry for the delay, a few final things snuck into 0.6 to get the release in really good shape.</p>
+
+
+<p>Another massive <a href="http://readthedocs.org/docs/mongoengine-odm/en/latest/changelog.html?highlight=changelog#changes-in-0-6">changelog</a> but the big items are:</p>
+
+
+<ul>
+<li><strong>Sharding support</strong><br />through the <a href="http://readthedocs.org/docs/mongoengine-odm/en/latest/guide/defining-documents.html#shard-keys">shard_key</a> meta data.</li>
+<li><strong>ReplicaSet Support</strong><br />You can now connect to replica sets for slave okay reads.</li>
+<li><strong>Dynamic Documents</strong><br />A new base class for documents that allows fully dynamic documents (or embedded documents) with expando style attribute setting.</li>
+<li><strong>PyMongo 2.2 support</strong><br />PyMongo imports now cleaned up for PyMongo 2.2 support.</li>
+</ul>
+
+
+<p>Other improvements worth a mention are: ImageField, scalar values, $elementMatch support, URI connection support and many more small bugfixes and improvements.</p>
+
+
+<p>See the <a href="http://readthedocs.org/docs/mongoengine-odm/en/latest/upgrade.html#to-0-6" target="_blank">upgrade docs</a> - on how to upgrade your application.</p>
+
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[MongoEngine 0.5 Released!]]></title>
+    <link href="http://rozza.github.com/mongoengine-05-released/"/>
+    <updated>2011-09-10T00:00:00+00:00</updated>
+    <id>http://rozza.github.com/mongoengine-05-released</id>
+    <content type="html"><![CDATA[<p>Hurray!&nbsp;<a href="http://mongoengine.org">MongoEngine</a> 0.5 has finally been released!</p>
+
+
+<p>With many improvements and bug fixes means that MongoEngine is more powerful than ever!</p>
+
+
+<p>Core improvements include:</p>
+
+
+<ul>
+<li><strong>Efficient save<br /></strong>Now when you save an existing object it atomically updates only what has been changed. Making it super efficient and so easy to use, without having to worrying about race conditions.</li>
+<li><strong>Efficient Database Referencing<br /></strong>MongoEngine saves you queries by intelligently identifiying and dereferencing DBReference fields.</li>
+<li><strong>Complex fields<br /></strong>Dictionary and List fields can store any complex data you require; other dictionaries, lists and other documents.</li>
+<li><strong>Signal support<br /></strong>pre and post save / delete.</li>
+<li><strong>Subfield slicing<br /></strong>For retrieving parts of subsets of lists, keeping data transfer down.</li>
+<li><strong>Abstract Base Classes<br /></strong>Helps keep your document definitions dry so you can easily extend Documents.</li>
+<li><strong>Custom Object Managers<br /></strong>When used with Astract Base Classes you can easily apply behaviour across all querysets.</li>
+<li><strong>query_counter<br /></strong>A context manager, that helps you determine the cost of some queries / code - great for testing!</li>
+</ul>
+
+
+<p>If you are using Flask - then check out our&nbsp;<a href="https://github.com/sbook/flask-mongoengine" title="Flask MongoEngine">Flask-MongoEngine</a>&nbsp;library, which provides MongoEngine connection and WTForms support.</p>
+
+
+<ul>
+</ul>
+
+
+<p>With Multi Database support coming quickly in <a href="https://github.com/hmarr/mongoengine/issues?milestone=2" title="MongoEngine 0.6">0.6</a>, we promise it wont take so long between release cycles! &nbsp;Checkout the <a href="http://mongoengine.org/docs" title="MongoEngine documentation">documentation</a> to get you started!</p>
+
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Exciting changes in MongoEngine.]]></title>
+    <link href="http://rozza.github.com/exciting-changes-in-mongoengine/"/>
+    <updated>2011-07-26T00:00:00+00:00</updated>
+    <id>http://rozza.github.com/exciting-changes-in-mongoengine</id>
+    <content type="html"><![CDATA[<p>For the last few months at work <a href="http://streetlife.com" target="_blank">we've</a> been adopting MongoDB as our main database. For those that don't know what MongoDB is and you're still reading this?!  "<em>MongoDB is an open source, document-oriented database designed with both scalability and developer agility in mind. Instead of storing your data in tables and rows as you would with a relational database, in MongoDB you store JSON-like documents with dynamic schemas.</em>"</p>
+
+
+<p>Coming from a Django background, <a href="http://mongoengine.org/" target="_blank">MongoEngine</a> "<em>a Document-Object Mapper (think ORM, but for document databases) for working with MongoDB from Python</em>" seemed a natural choice.  Since joining the project, as well as fixing numerous bugs, we've added many new features to MongoEngine core.</p>
+
+
+<p>Here are some of my favourites:</p>
+
+
+<ul>
+<li>Added complex Dictionary / List fields - Which&nbsp;can store any complex data you require; other dictionaries, lists, references.</li>
+<li>Signal support -&nbsp;pre and post save / delete.</li>
+<li>Subfield slicing - for retrieving parts of subsets of lists.</li>
+<li>Abstract Base Classes - Helps keep your document definitions dry</li>
+<li>Custom Object Managers - When used with Astract Base Classes you can easily apply behaviour across all querysets.</li>
+<li>Delta tracking - Now save on an existing object, atomically updates only what has been changed.  Making it super efficient and so easy to use, without having to worrying about race conditions.</li>
+<li>Select Related support - Now generic / reference fields can use select_related to minimise the number of queries to mongo.</li>
+<li>query_counter - A context manager, that helps you determine the cost of some queries / code.</li>
+</ul>
+
+
+<p>Some of the above, I'll blog about in more depth in the near future as especially the delta tracking is pretty cool. &nbsp;In the near future the 0.5 release will be out - its on the dev branch if you want to play with it now. &nbsp;With more ideas / suggestions for improvements being added to&nbsp;<a href="https://github.com/hmarr/mongoengine/issues" target="_blank">github</a>, it seems that MongoEngine will only get better.  So why not signup to the <a href="http://groups.google.com/group/mongoengine-users" target="_blank">usergroup</a> and join in the discussion.</p>
+
+
+<p>[[posterous-content:jDpAqsCwazsorHzpxatC]]</p>
+
+]]></content>
+  </entry>
+  
+</feed>

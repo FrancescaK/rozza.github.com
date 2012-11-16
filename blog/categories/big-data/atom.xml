@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: big data | Ross Lawley]]></title>
+  <link href="http://rozza.github.com/blog/categories/big-data/atom.xml" rel="self"/>
+  <link href="http://rozza.github.com/"/>
+  <updated>2012-11-16T14:14:23+00:00</updated>
+  <id>http://rozza.github.com/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[NoSQL Devroom @ fosdem 2013]]></title>
+    <link href="http://rozza.github.com/nosql-devroom-fosdem-2013/"/>
+    <updated>2012-11-12T00:00:00+00:00</updated>
+    <id>http://rozza.github.com/nosql-devroom-fosdem-2013</id>
+    <content type="html"><![CDATA[<p>Awesome news after a hiatus of 3 years theres going to be a NoSql devroom at <a href="https://fosdem.org/2013/" title="fosdem 2013" target="_blank">fosdem</a> in february. &nbsp;If you don't know fosdem - its a great conference based in Brussels covering all things open source, theres no registration, just turn up with the other 5,000 free and open source fans.</p>
+
+
+<p>So if your interested in NoSql or big data then propose a talk! &nbsp;We're looking for 25 minute or 50 minute talks - sign up here: <a href="http://bit.ly/nosql-devroom-2013" title="NoSQL devroom CFP">bit.ly/nosql-devroom-2013</a>&nbsp;alternatively sign up to the <a href=" lists.fosdem.org/mailman/listinfo/nosql-devroom" title="NoSQL devroom Mailing list">mailing list</a> and help make the devroom great!</p>
+
+
+<p>&nbsp;</p>
+
+]]></content>
+  </entry>
+  
+</feed>

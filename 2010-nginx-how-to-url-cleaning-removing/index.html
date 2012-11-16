@@ -1,0 +1,230 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Nginx how to; Url cleaning - removing multiple slashes - Ross Lawley</title>
+  <meta name="author" content="Ross Lawley">
+
+  
+  <meta name="description" content="Tweet Nginx How to; Url Cleaning - Removing Multiple Slashes Jan 10th, 2010 Carrying on with my short posts on configuring Nginx, heres an easy tip &hellip;">
+  
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rozza.github.com/2010-nginx-how-to-url-cleaning-removing/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ross Lawley" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Ross Lawley</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Ross Lawley</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">Some thoughts and musings</h2>
+  </li>
+
+  <li class="link">
+    Python engineering evangelist and trainee triathlete!
+  </li>
+
+  <li class="link">
+    <a href="http://twitter.com/RossC0/">twitter</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/rozza/">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+  
+    <li>
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:rozza.github.com" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+    </li>
+    
+</ul>
+
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <article class="post">
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rozza.github.com/2010-nginx-how-to-url-cleaning-removing/" data-via="RossC0" data-counturl="http://rozza.github.com/2010-nginx-how-to-url-cleaning-removing/" data-size="large">Tweet</a>
+  
+  
+  
+</div>
+
+  
+  <header>
+    
+      <h2 class="entry-title">Nginx How to; Url Cleaning - Removing Multiple Slashes</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-01-10T00:00:00+00:00" pubdate data-updated="true">Jan 10<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<p>Carrying on with my short posts on configuring <a href="http://www.nginx.org/">Nginx</a>, heres an easy tip to ensure that all urls are clean, multiple slashes are removed and redirected to the cleaned url eg: <a href="http://example.com//search/">http://example.com//search/</a> and will be redirected to: <a href="http://example.com">http://example.com</a>.</p>
+<h2>**<a href="#fixed">Updated Sept 15th</a></h2>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+  # $uri is a cleaned version of the url
+  # so we test against the $requested_uri
+  set $clean_uri        $uri$is_args$args;
+  if ( $clean_uri != $request_uri ) {
+    rewrite ^/(.*)      $scheme://$host/$1    permanent;
+  }</pre></div>
+</div>
+
+<p>This will stop you serving the same content on multiple urls which has SEO implications.  In the past I have written <a href="http://wsgi.org/wsgi/Middleware_and_Utilities">middleware</a> to do the check and redirects, but as the Nginx <a href="http://wiki.nginx.org/NginxHttpProxyModule">Proxy Module</a> uses the cleaned $uri the middleware <em><strong>never sees</strong></em> the multiples slashes and doesn&#8217;t know without looking at X-Headers that it is serving an invalid url.</p>
+<p><em>*</em> Wondering why the redirect doesn&#8217;t redirect to itself?  The <a href="http://www.regular-expressions.info/">regular expression</a> just captures everything after the first slash!  Well the <a href="http://wiki.nginx.org/NginxHttpRewriteModule#rewrite"> rewrite module</a> also uses the cleaned $uri!</p>
+<h3><span style="text-decoration: line-through;">** Update: June 24th</span></h3>
+<p>It seems that you can get into a nasty redirect loop, so if your just cleaning double slashes you can use this:</p>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    if ($request_uri ~* &quot;\/\/&quot;) {
+      rewrite ^/(.*)      $scheme://$host/$1    permanent;
+    }</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<h3>** Update: Sept 15th</h3>
+<p><a href="http://www.topper.me.uk/" rel="friend">Jon Topper</a> found a bug with the previous fix - <a href="http://www.example.com//">http://www.example.com//</a>?//  would cause a redirect loop.  He posted in the comments a fix and I&#8217;m putting here so its easier to read.  Thanks Jon.</p>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    # Tested against:
+    #   http://www.example.com//
+    #   http://www.example.com/w//w//w//
+    #   http://www.example.com//?//
+    set $test_uri $scheme://$host$request_uri;
+    if ($test_uri != $scheme://$host$uri$is_args$args) {
+        rewrite ^ $scheme://$host$uri$is_args$args? permanent;
+    }</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3020550632646606946?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+
+
+</article>
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rozza';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rozza.github.com/2010-nginx-how-to-url-cleaning-removing/';
+        var disqus_url = 'http://rozza.github.com/2010-nginx-how-to-url-cleaning-removing/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>
