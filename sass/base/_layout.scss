@@ -95,6 +95,7 @@ ul#menu li.subtitle {
 ul#menu .search {
   padding: 4px 14px;
   margin-bottom: 0;
+  margin-left: 15px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -319,12 +320,14 @@ article.post {
 
 section.comments {
   width: auto;
+  max-width: 500px;
   position: relative;
   padding-left: 50px;
   overflow-x: hidden;
 }
 
-article.post h2, article.post p {
+article.post h2, article.post p, article.post .gist,
+article.post ul, article.post {
   max-width: 500px;
 }
 

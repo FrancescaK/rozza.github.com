@@ -2,6 +2,7 @@
 layout: post
 title: Nginx how to; multiple if statements
 published: true
+comments: true
 date: 2010-01-04
 categories:
 - code
@@ -23,11 +24,11 @@ posterous_slug: 2010/01/nginx-how-to-multiple-if-statements.html
   <div class="code"><pre>if ($request_method = POST) {
     set $test  P;
   }
- 
+
   if ($http_cookie ~* &quot;CCCC=.+(?:;|$)&quot; ) {
     set $test  &quot;${test}C&quot;;
   }
- 
+
   if ($test = PC) {
     #rewrite rule goes here.
   }</pre></div>

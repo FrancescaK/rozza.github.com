@@ -2,6 +2,7 @@
 layout: post
 title: Locking Django management commands
 published: true
+comments: true
 date: 2010-10-18
 categories:
 - command
@@ -21,10 +22,10 @@ posterous_slug: 2010/10/locking-django-management-commands.html
 <div class="CodeRay">
   <div class="code"><pre># load the deocrator
 from decorators import handle_lock
-    
+
 class Command(BaseCommand):
     help = &quot;Regular Management command.&quot;
-   
+
     # decorate the handle
     @handle_lock
     def handle(self, *args, **options):
