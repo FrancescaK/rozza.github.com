@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: management | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/management/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Locking Django management commands]]></title>
+    <link href="http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands/"/>
+    <updated>2010-10-18T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands</id>
+    <content type="html"><![CDATA[<p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
+
+
+<p>So I created a decorator that would add a locking file based on the current module file name, which would ensure that there is only ever one process running at any time.  Then all I have to do is simply decorate my management commands by applying the decorator to the handle method like so:</p>
+
+
+<p><code> </code></p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre># load the deocrator
+from decorators import handle_lock
+
+class Command(BaseCommand):
+    help = &quot;Regular Management command.&quot;
+
+    # decorate the handle
+    @handle_lock
+    def handle(self, *args, **options):
+        # Do your stuff here</pre></div>
+</div>
+
+
+
+
+<p><code> </code></p>
+
+
+<p>&nbsp;</p>
+
+
+<p>And volia the management command will only ever run in single file.  Go ahead and try it out:</p>
+
+
+<p>&nbsp;</p>
+
+
+<p><script src="https://gist.github.com/631953.js?file=decorator.py"></script></p>
+
+]]></content>
+  </entry>
+  
+</feed>

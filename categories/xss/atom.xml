@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: xss | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/xss/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Is web based configuration considered harmful?]]></title>
+    <link href="http://rosslawley.co.uk/2010/04/2010-is-web-based-configuration-considered/"/>
+    <updated>2010-04-14T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/04/2010-is-web-based-configuration-considered</id>
+    <content type="html"><![CDATA[<p>Recently, Apache was compromised by a XSS attack (<a href="https://blogs.apache.org/infra/entry/apache_org_04_09_2010">apache.org incident report for 04/09/2010</a>).</p>
+
+
+<p>Someone posted an issue on their JIRA instance containing a shorted URL, which had an XSS attack that stole the user's session cookie.  Some admin users subsequently clicked on the link and their session was stolen and the JIRA based admin was compromised.  The hackers now had access to the JIRA instance admin, but from that point they gained root access to one machine and shell access to another.</p>
+
+
+<h2>From bad to worse</h2>
+
+
+<p>How did the hackers with administrator privileges in JIRA escalate to root access on one server and shell access on another?  Via <strong>web based configuration</strong>.  This allowed the attackers to change the upload root of files to an <em>executable</em> directory, from there they uploaded JSPs that gave them backdoor access to the file system.  From there the hackers modified JIRA and started collecting entered passwords, and then sent reset password notifications to all users and then they farmed the new passwords!  One of the collected passwords was the same as the user's shell account and from there they continued the attack.</p>
+
+
+<h2>Lessons learnt</h2>
+
+
+<p>Firstly, full credit to Apache for being open and honest about the attack, it really does help educate people on the seriousness of XSS attacks and how one seemingly innocent url lead to full control over a server.  People should take note, XSS is not trivial and the attack on Apache certainly wasn't.</p>
+
+
+<p>I have to admit web based configuration is infinitely preferable to me, over writing reams of XML configuration!  However, it is vulnerable and accessible to attack!  So lock it down and minimise risk.  Don't make the administration urls accessible to the whole web!  Make it accessible via a VPN only or limit it to certain IP's range and minimise the risk.</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-43089792524721203?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

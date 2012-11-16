@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: django | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/django/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Locking Django management commands]]></title>
+    <link href="http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands/"/>
+    <updated>2010-10-18T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands</id>
+    <content type="html"><![CDATA[<p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
+
+
+<p>So I created a decorator that would add a locking file based on the current module file name, which would ensure that there is only ever one process running at any time.  Then all I have to do is simply decorate my management commands by applying the decorator to the handle method like so:</p>
+
+
+<p><code> </code></p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre># load the deocrator
+from decorators import handle_lock
+
+class Command(BaseCommand):
+    help = &quot;Regular Management command.&quot;
+
+    # decorate the handle
+    @handle_lock
+    def handle(self, *args, **options):
+        # Do your stuff here</pre></div>
+</div>
+
+
+
+
+<p><code> </code></p>
+
+
+<p>&nbsp;</p>
+
+
+<p>And volia the management command will only ever run in single file.  Go ahead and try it out:</p>
+
+
+<p>&nbsp;</p>
+
+
+<p><script src="https://gist.github.com/631953.js?file=decorator.py"></script></p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Resetting South Migrations]]></title>
+    <link href="http://rosslawley.co.uk/2010/09/2010-resetting-south-migrations/"/>
+    <updated>2010-09-28T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/09/2010-resetting-south-migrations</id>
+    <content type="html"><![CDATA[<p><a href="http://south.aeracode.org/">South</a> migrations are great but over time, as you write more and more they can become unwieldy and slow. This is exactly what happened at <a href="http://www.streetbook.com/">Streetbook</a>, we love fast iterations and releasing often - the only downside was the number of migrations grew and grew to over a hundred. So we bit the bullet and reset them, it was less traumatic than I initially feared and we got the number of migrations down to just ten.  As I couldn't find an easy step by step guide I thought I'd jot this down for others as a quick guide.</p>
+
+
+<h2>Reseting migrations</h2>
+
+
+<p>I found these steps allowed me to reset the migrations quickly and efficiently.  First with a fresh db run the existing migrations.  Then for each app:</p>
+
+
+<ol>
+<li>Export any created data: <br />
+<div class="CodeRay">
+  <div class="code"><pre>./manage.py dumpdata appname --indent=4 &gt; migration_data/app.json</pre></div>
+</div>
+
+</li>
+<li>Delete the old migrations </li>
+<li>Create the initial migration
+<div class="CodeRay">
+  <div class="code"><pre>./manage.py schemamigration appname --initial</pre></div>
+</div>
+
+</li>
+<li>If needed, create a data migration for the app using either:
+<ul>
+<li>fixtures for large datasets</li>
+<li>the south orm</li>
+</ul>
+</li>
+</ol>
+
+
+<h3>Migration Dependencies</h3>
+
+
+<p>Once you've created all your new migrations run your test suite - its a great way to test the migration chain and will help you sort out dependencies. If building the database for the test suite fails - read the backtrace and look for the migration that caused the failure and then add the correct <a href="http://south.aeracode.org/docs/dependencies.html">dependencies code</a> - depends_on / needed_by to the failing migrations.</p>
+
+
+<h3>Circuluar Migrations</h3>
+
+
+<p>Depending on your database structure you might end up with a migration chain that can't be fulfilled due to a circular dependency. I found that we had a couple of instances of Many To Many database tables being created in the initial migrations and those tables relying on one of the tables being created first. So to fix I removed the M2M migrations into their own migration and this cleared the circular dependency.</p>
+
+
+<h3>A word about fixtures</h3>
+
+
+<p>Fixtures can be brilliant and save loads of time, however they bypass the frozen orm and use the schema of the actual model - this can be painful when the model changes in the future. An simple work round I've used in the past has been something like: <a href="http://gist.github.com/623725">abusing fixtures in migrations</a>. That worked until I reset the migrations back to a clean state.</p>
+
+
+<h2>Pushing Live</h2>
+
+
+<p>Make sure all the old migrations have been run and you aren't introducing any schema changes with the new migrations - do that before or after you've reset the migrations <em>but not at the same time</em>.</p>
+
+
+<h3>Reset old migrations:</h3>
+
+
+<p>Its simple just mark all the migrations as fake:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>./manage.py migrate --all --fake --delete-ghost-migrations</pre></div>
+</div>
+
+
+
+
+<p>That <em>should work</em>, but this step failed for me saying one initial was applied before its dependency (even though I was faking them.). However, as I was happy with the migration chain - thanks to my trusty test suite I just killed my migration history like so:</p>
+
+
+<p>&nbsp;</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>from south.models import MigrationHistory
+MigrationHistory.objects.all().delete()</pre></div>
+</div>
+
+
+
+
+<p>&nbsp;</p>
+
+
+<p>Then I marked all the migrations as fake:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>./manage.py migrate --all --fake</pre></div>
+</div>
+
+
+
+
+<p>All done!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Using Django to serve parts of your site over HTTPS]]></title>
+    <link href="http://rosslawley.co.uk/2010/08/2010-using-django-to-serve-parts-of-your/"/>
+    <updated>2010-08-19T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/08/2010-using-django-to-serve-parts-of-your</id>
+    <content type="html"><![CDATA[<p>Firstly, you'll need to get your web server up and running with https, you'll needyour certificate and key set up, happily theres already loads of posts about that,so I won't cover it here!</p>
+
+
+<p>The second area of pain is that djangos development runserver doesn't support HTTPS,which is irksome but apparently there are ways around it! The <a href="http://code.google.com/p/django-weave/wiki/HTTPSDevelopment">django-weave</a> projectgo into detail about it.  I'm lucky in that I run vm's to mimic my production environment, but I often use runserver as well as its just plain handy.</p>
+
+
+<p>To serve parts of the site as HTTPS I just decorate the views and check the    `is_secure()` flag.  Then I redirect to the secure version!</p>
+
+
+<p><script src="https://gist.github.com/537450.js?file=secure_required.py"></script></p>
+
+
+<p>Simple stuff, but part of the problem is the url template tag does local urls,    so once they are on HTTPS how do we ensure that they use HTTP for other parts    of the site? To do this I use a middleware that checks for the flag set on the    request in the decorator:</p>
+
+
+<p><script src="https://gist.github.com/537457.js?file=secure_required_middleware.py"></script></p>
+
+
+<p>That ensures that I go back to HTTP versions of pages that should be served by    HTTP.</p>
+
+
+<p>A final pain is managing mixed content type warnings, which happens when a    web page is served via HTTPS but the assets are served by HTTP, this is bad    as it could undermine the security of the whole page - so dont do it!    You'll need to handle it so you'll have to add checks like:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>http</pre></div>
+</div>
+
+
+
+
+<p>Make it easy by writing a template tag to do it and don't forget and js widgets like addthis!</p>
+
+
+<p>&nbsp;</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-5991303057497360098?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Django 1.2 and Jinja2 integration]]></title>
+    <link href="http://rosslawley.co.uk/2010/07/2010-django-12-and-jinja2-integration.html/"/>
+    <updated>2010-07-12T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/07/2010-django-12-and-jinja2-integration.html</id>
+    <content type="html"><![CDATA[<p>Recently, I needed some more presentation logic in my html templates than django templating language would allow, so I looked into getting <a href="http://www.djangoproject.com/">Django 1.2</a> and <a href="http://jinja.pocoo.org/2/">Jinja2</a> playing nicely.</p>
+
+
+<p>The main caveat is I also use the admin and have legacy parts of the site that still use the old django templates.  So I was hoping to do both and it turned out to be easy!  I can even review the context in the <a href="http://github.com/robhudson/django-debug-toolbar">Django Debug Toolbar</a>.</p>
+
+
+<p>The Gist for it is <a href="http://gist.github.com/472309">here</a>, just add a setting for the Jinja2 template directory and away you go!</p>
+
+
+<p><script src="https://gist.github.com/472309.js?file=django_jinja.py"></script></p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-791605223425875560?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Planning to Scale]]></title>
+    <link href="http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html/"/>
+    <updated>2010-02-22T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html</id>
+    <content type="html"><![CDATA[<p>Recently at <a href="http://thisisglobal.com/">Global Radio</a> we recently relaunched <a href="http://www.heart.co.uk/">Heart FM</a>, which now is a conglomeration of 33 local heart station websites, where previously it was 33 individual sites.  So to achieve this the team refactored our inhouse CMS to handle these localisations in as sane a way as possible. With the aim being that with the CMS our editors could easily manage and share content across these <em>sites</em> and make it easy to localise any aspect of the page, where one or more stations wants to differ from the norm.</p>
+
+
+<p>This resulted in a fairly large scale refactoring of the CMS to clean up and simplify the logic of the system.  The end result of that work is an editor can now; localise, schedule or symlink (share across pages / locations) any aspect of the page.  This work has resulted in an extremely flexible and powerful system, but also has has thrown up an number of challenges - one of which is how to make the website scale effectively and this is the focus of the post.</p>
+
+
+<h2>Targets</h2>
+
+
+<p>The first rule of scaling is to have something to aim for:</p>
+
+
+<blockquote class="posterous_short_quote"><p>"Premature optimization is the root of all evil" - without being focused then your optimisations are likely to focus on the wrong areas.</p></blockquote>
+
+
+<p>I remember early in my career people discussing large databases and the differences in perception of what "<em>large is</em>" can be huge.  So before you begin to optimise your site, you should at least know what you want to aim form, otherwise you are likely to waste time, effort and money and not focus on what actually matters.  For Heart we know we have to deal with traffic surges similar to the "digg effect", so our aim is to be able to deilver content under this periods of extreme traffic.</p>
+
+
+<h2>Remove bottlenecks</h2>
+
+
+<p>For our sites the <strong>main bottleneck</strong> is the database.  This is no surprise as, databases are often a bottleneck in dynamic websites and a number of approaches can be taken to minimise its impact.  At Global we have written a flexible CMS that is complex in that it allows <em>n</em> levels of nesting, scheduling, localising and sharing of modules on a page. But on the whole our sites don't produce complex and dynamic output, there are elements of that, but on the whole its a magazine / news style site, with hub pages highlighting articles, competitions and galleries within the site. </p>
+
+
+<p>During the refactoring as features neared completion in the CMS we used <a href="http://github.com/robhudson/django-debug-toolbar">Rob Hudson's Django Debug Toolbar</a> to keep an eye on query count.  We kept down the number of queries using a number of approaches; where possible we cached, memoized, ensured that we used the ORM efficiently and made sure that we didn't repeat queries over and over.  Daniel Roseman has written some great posts on <a href="http://blog.roseman.org.uk/tags/patterns/">Django Patterns</a> sharing some insights learnt whilst refactoring the CMS and improving its performance, so I won't repeat them here.</p>
+
+
+<p>Another bottleneck we had and again the debug toolbar provides this information was the number of templates it could take to render a page, as this problem had been identified and fixed in Django 1.2 with a relatively small patch we backported it to our version of Django.</p>
+
+
+<h2>Caching</h2>
+
+
+<p>Caching is incredibly important, most of the data on our pages is relatively static. Initially we looked at baking all the static parts of the pages to disk on creation or change of data in the CMS.  This looked ideal, with that in place we could just use these pages as templates themselves and render any dynamic parts, therefore saving many queries and bypassing lots of logic.  However, due to the flexibility of the CMS, if you factor in the localisations, symlinking and scheduling of modules on a page it wasn't as simple and robust an approach as hoped so was binned as it just wasn't worth the cost of building and maintaining it.  However, I would recommend this approach, if its feasible as it makes sense to keep as much static stuff static.  There is no need to force every user to rebuild part or sometimes all of the page if its non changing or infrequently changing data.</p>
+
+
+<p>We liked the idea of caching the static parts and rendering the dynamic parts of the page and time based caching provided a simple and easy solution.  However, when dealing with the "digg effect" our aim is to <em>always</em> serve the page and to help us do that, we decided that if the dynamic parts were failing under the load, then just serving the cached page, without the dynamic elements was preferable to serving a "fail whale".</p>
+
+
+<h2>Caching with Nginx</h2>
+
+
+<p>Nginx, Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>), proxies and proxy caching provided a solution to managing high load out of the box.  The proxy_cache is faster than using memcached and can be made semi persistent, SSIs provide a mechanism to replace dynamic blocks in the cached page and even allow you handle if the rendering the ssi fails for any reason.  For us and our site its a great solution to keeping the site up.  </p>
+
+
+<p>Heres the request / response flow:</p>
+
+
+<div class="separator" style="">[[posterous-content:njuJuehynfxlDlAaeIdx]]</div>
+
+
+<p>Shamelessly adapted from James Gardener (<a href="http://jimmyg.org/blog/2009/ssi-memcached-nginx.html">SSI, Memcached and Nginx (plus Varnish, ESI and static generation)</a>)</p>
+
+
+<p>With Nginx we set the cache timeout to be low, but more importantly we keep the cache on disk for a longer period of time, so if anything happens to the django backend we can still serve:</p>
+
+
+<div class="separator" style="clear: both; text-align: center;">[[posterous-content:zCHBlgdfqBDvArkyrzvu]]</div>
+
+
+<h2>Conclusions</h2>
+
+
+<p>This provides us with a robust solution, that can allow us to handle large surges in traffic and makes us resilient if the backend goes away for any reason.  There is a cost, we lose some dynamic parts of the site,  whether or not we have found <strong>the</strong> correct solution <em>for us</em> only time will tell, but for now we've solved a problem.</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3776006375541355811?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

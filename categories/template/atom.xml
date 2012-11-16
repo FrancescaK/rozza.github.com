@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: template | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/template/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Django 1.2 and Jinja2 integration]]></title>
+    <link href="http://rosslawley.co.uk/2010/07/2010-django-12-and-jinja2-integration.html/"/>
+    <updated>2010-07-12T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/07/2010-django-12-and-jinja2-integration.html</id>
+    <content type="html"><![CDATA[<p>Recently, I needed some more presentation logic in my html templates than django templating language would allow, so I looked into getting <a href="http://www.djangoproject.com/">Django 1.2</a> and <a href="http://jinja.pocoo.org/2/">Jinja2</a> playing nicely.</p>
+
+
+<p>The main caveat is I also use the admin and have legacy parts of the site that still use the old django templates.  So I was hoping to do both and it turned out to be easy!  I can even review the context in the <a href="http://github.com/robhudson/django-debug-toolbar">Django Debug Toolbar</a>.</p>
+
+
+<p>The Gist for it is <a href="http://gist.github.com/472309">here</a>, just add a setting for the Jinja2 template directory and away you go!</p>
+
+
+<p><script src="https://gist.github.com/472309.js?file=django_jinja.py"></script></p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-791605223425875560?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

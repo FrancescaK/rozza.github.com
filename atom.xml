@@ -4,7 +4,7 @@
   <title><![CDATA[Ross Lawley]]></title>
   <link href="http://rosslawley.co.uk/atom.xml" rel="self"/>
   <link href="http://rosslawley.co.uk/"/>
-  <updated>2012-11-16T15:07:16+00:00</updated>
+  <updated>2012-11-16T16:29:54+00:00</updated>
   <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[NoSQL Devroom @ fosdem 2013]]></title>
-    <link href="http://rosslawley.co.uk/nosql-devroom-fosdem-2013/"/>
+    <link href="http://rosslawley.co.uk/2012/11/nosql-devroom-fosdem-2013/"/>
     <updated>2012-11-12T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/nosql-devroom-fosdem-2013</id>
+    <id>http://rosslawley.co.uk/2012/11/nosql-devroom-fosdem-2013</id>
     <content type="html"><![CDATA[<p>Awesome news after a hiatus of 3 years theres going to be a NoSql devroom at <a href="https://fosdem.org/2013/" title="fosdem 2013" target="_blank">fosdem</a> in february. &nbsp;If you don&#8217;t know fosdem - its a great conference based in Brussels covering all things open source, theres no registration, just turn up with the other 5,000 free and open source fans.</p>
 <p>So if your interested in NoSql or big data then propose a talk! &nbsp;We&#8217;re looking for 25 minute or 50 minute talks - sign up here: <a href="http://bit.ly/nosql-devroom-2013" title="NoSQL devroom CFP">bit.ly/nosql-devroom-2013</a>&nbsp;alternatively sign up to the <a href=" lists.fosdem.org/mailman/listinfo/nosql-devroom" title="NoSQL devroom Mailing list">mailing list</a> and help make the devroom great!</p>
 <p>&nbsp;</p>
@@ -26,9 +26,9 @@
   
   <entry>
     <title type="html"><![CDATA[Flask-MongoEngine extension released!]]></title>
-    <link href="http://rosslawley.co.uk/flask-mongoengine-extension-released/"/>
+    <link href="http://rosslawley.co.uk/2012/05/flask-mongoengine-extension-released/"/>
     <updated>2012-05-18T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/flask-mongoengine-extension-released</id>
+    <id>http://rosslawley.co.uk/2012/05/flask-mongoengine-extension-released</id>
     <content type="html"><![CDATA[<p>After using <a href="http://flask.pocoo.org" title="Flask framework" target="_blank">Flask</a>&nbsp;and <a href="http://mongoengine.org" title="mongoengine - python mongo odm" target="_blank">MongoEngine</a> together for sometime, I&#8217;ve finally got round to publishing the extension on pypi - installing is simple: pip install flask-mongoengine. &nbsp;The documentation is here:&nbsp;<a href="http://readthedocs.org/docs/flask-mongoengine">http://readthedocs.org/docs/flask-mongoengine</a></p>
 <p>Configuration is simple</p>
 <p><script src="https://gist.github.com/2724682.js"></script></p>
@@ -39,9 +39,9 @@
   
   <entry>
     <title type="html"><![CDATA[Near Nuremburg in April? Come see me talk at OSDC.de]]></title>
-    <link href="http://rosslawley.co.uk/near-nuremburg-in-april-come-see-me-talk-at-o/"/>
+    <link href="http://rosslawley.co.uk/2012/03/near-nuremburg-in-april-come-see-me-talk-at-o/"/>
     <updated>2012-03-23T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/near-nuremburg-in-april-come-see-me-talk-at-o</id>
+    <id>http://rosslawley.co.uk/2012/03/near-nuremburg-in-april-come-see-me-talk-at-o</id>
     <content type="html"><![CDATA[<p>I&#8217;ve just got back from a buzzing mongoDB Berlin - it was a great event with lots of developers wanting to learn more about <a href="http://mongodb.org" title="MongoDB" target="_blank">mongoDB</a>. What struck me most was the level of interest in Germany for mongoDB and the general enthusiasm around web and computing technology; from big data to agile methodology and devops to high scalability.</p>
 <p>With that in mind I&#8217;m really pleased to announce I&#8217;ll be speaking at the <a href="http://www.netways.de/en/osdc/osdc_2012" title="OSDC.de conference: data, ops, scaling">Open Source Data Center</a> conference in Nuremberg next month. &nbsp;I&#8217;m really looking forward to the conference as it covers all things&nbsp;DevOps, Databases and Scalability.</p>
 <p>So if you are in the neighbourhood then make sure you come by, I&#8217;m there for two days and will be happy to answer any questions regarding mongoDB.</p>
@@ -52,9 +52,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoEngine 0.6 Released!]]></title>
-    <link href="http://rosslawley.co.uk/mongoengine-06-released/"/>
+    <link href="http://rosslawley.co.uk/2012/03/mongoengine-06-released/"/>
     <updated>2012-03-05T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/mongoengine-06-released</id>
+    <id>http://rosslawley.co.uk/2012/03/mongoengine-06-released</id>
     <content type="html"><![CDATA[<p>Sorry for the delay, a few final things snuck into 0.6 to get the release in really good shape.</p>
 <p>Another massive <a href="http://readthedocs.org/docs/mongoengine-odm/en/latest/changelog.html?highlight=changelog#changes-in-0-6">changelog</a> but the big items are:</p>
 <ul>
@@ -71,9 +71,9 @@
   
   <entry>
     <title type="html"><![CDATA[mongoDB Brussels - An introduction to mongoDB]]></title>
-    <link href="http://rosslawley.co.uk/mongodb-brussels-an-introduction-to-mongodb/"/>
+    <link href="http://rosslawley.co.uk/2012/02/mongodb-brussels-an-introduction-to-mongodb/"/>
     <updated>2012-02-07T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/mongodb-brussels-an-introduction-to-mongodb</id>
+    <id>http://rosslawley.co.uk/2012/02/mongodb-brussels-an-introduction-to-mongodb</id>
     <content type="html"><![CDATA[<p>Here are my slides from my introduction to mongoDB talk at the Brussels mongoDB user group.</p>
 <p><script async class="speakerdeck-embed" data-id="4f30411d2ed25800220039ff" data-ratio="1.33333333333333" src="http://rosslawley.co.uk//speakerdeck.com/assets/embed.js"></script>
 <a href="http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction">http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction</a></p>
@@ -82,9 +82,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoEngine 0.5 Released!]]></title>
-    <link href="http://rosslawley.co.uk/mongoengine-05-released/"/>
+    <link href="http://rosslawley.co.uk/2011/09/mongoengine-05-released/"/>
     <updated>2011-09-10T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/mongoengine-05-released</id>
+    <id>http://rosslawley.co.uk/2011/09/mongoengine-05-released</id>
     <content type="html"><![CDATA[<p>Hurray!&nbsp;<a href="http://mongoengine.org">MongoEngine</a> 0.5 has finally been released!</p>
 <p>With many improvements and bug fixes means that MongoEngine is more powerful than ever!</p>
 <p>Core improvements include:</p>
@@ -108,9 +108,9 @@
   
   <entry>
     <title type="html"><![CDATA[Exciting changes in MongoEngine.]]></title>
-    <link href="http://rosslawley.co.uk/exciting-changes-in-mongoengine/"/>
+    <link href="http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/"/>
     <updated>2011-07-26T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/exciting-changes-in-mongoengine</id>
+    <id>http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine</id>
     <content type="html"><![CDATA[<p>For the last few months at work <a href="http://streetlife.com" target="_blank">we&#8217;ve</a> been adopting MongoDB as our main database. For those that don&#8217;t know what MongoDB is and you&#8217;re still reading this?!  &#8221;<em>MongoDB is an open source, document-oriented database designed with both scalability and developer agility in mind. Instead of storing your data in tables and rows as you would with a relational database, in MongoDB you store JSON-like documents with dynamic schemas.</em>&#8221;</p>
 <p>Coming from a Django background, <a href="http://mongoengine.org/" target="_blank">MongoEngine</a> &#8221;<em>a Document-Object Mapper (think ORM, but for document databases) for working with MongoDB from Python</em>&#8221; seemed a natural choice.  Since joining the project, as well as fixing numerous bugs, we&#8217;ve added many new features to MongoEngine core.</p>
 <p>Here are some of my favourites:</p>
@@ -131,9 +131,9 @@
   
   <entry>
     <title type="html"><![CDATA[Juneathon Fail!]]></title>
-    <link href="http://rosslawley.co.uk/juneathon-fail/"/>
+    <link href="http://rosslawley.co.uk/2011/06/juneathon-fail/"/>
     <updated>2011-06-05T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/juneathon-fail</id>
+    <id>http://rosslawley.co.uk/2011/06/juneathon-fail</id>
     <content type="html"><![CDATA[<p>Well after having a great camping trip at the start of a week holiday, the Lawleys decided to head off camping again. &nbsp;So I failed to start off Juneathon :( &nbsp;I have had a great and active June so far, country walks, loads off fresh air and my triathlon training is 6 days a week, so I wont be missing out, but alas I wont be blogging it all.</p>
 <p>Good luck to the other Juneathletes!</p>
 ]]></content>
@@ -141,9 +141,9 @@
   
   <entry>
     <title type="html"><![CDATA[Juneathon is coming!]]></title>
-    <link href="http://rosslawley.co.uk/juneathon-is-coming/"/>
+    <link href="http://rosslawley.co.uk/2011/05/juneathon-is-coming/"/>
     <updated>2011-05-25T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/juneathon-is-coming</id>
+    <id>http://rosslawley.co.uk/2011/05/juneathon-is-coming</id>
     <content type="html"><![CDATA[<p>[[posterous-content:lBtwagDfBGfffAewygtF]]</p>
 <p>Roll up, roll up! &nbsp;Juneathon is nearly on us sign up here:&nbsp;<a href="http://www.juneathon.com/">http://www.juneathon.com/</a></p>
 <p>What is it? &nbsp;Its a festival of exercise for the month of june!</p>
@@ -156,9 +156,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bedford Sprint Series 1 - 24th April]]></title>
-    <link href="http://rosslawley.co.uk/bedford-sprint-series-1-24th-april/"/>
+    <link href="http://rosslawley.co.uk/2011/05/bedford-sprint-series-1-24th-april/"/>
     <updated>2011-05-04T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/bedford-sprint-series-1-24th-april</id>
+    <id>http://rosslawley.co.uk/2011/05/bedford-sprint-series-1-24th-april</id>
     <content type="html"><![CDATA[<p>Thanks to <a href="http://www.galeforce-events.com/sprintseries.htm" title="Galeforce sprint series" target="_blank">Galeforce events</a> for putting on a great event, it was my first real sprint triathlon - I did one back in 2003 but with no training I don&#8217;t really count it.</p>
 <p>The venue was easy to get to and had ample parking, I was slightly nervous using my new bike rack on the car, but it was great (thanks Halfords!). &nbsp;I got there with plenty of time to spare, got my transition area sorted. &nbsp;I noticed lots of people using plastic boxes to carry / store their transition kit in - much easier and tidier than a bag, so I&#8217;ll do the same next time. &nbsp;The swimming pool changing rooms were open, but don&#8217;t really have many facilities - there was always a queue for the gents (pre race jitters I suppose). &nbsp;I put myself down for a 5:30 swim based on my training the week before, so I had a long wait before starting - over an hour. &nbsp;A feel laps of the diving pool, did little to calm the nerves.</p>
 <p><span style="font-size: medium;">Swim - 400m (07:00)</span></p>
@@ -179,9 +179,9 @@
   
   <entry>
     <title type="html"><![CDATA[Back to square one]]></title>
-    <link href="http://rosslawley.co.uk/back-to-square-one/"/>
+    <link href="http://rosslawley.co.uk/2011/03/back-to-square-one/"/>
     <updated>2011-03-03T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/back-to-square-one</id>
+    <id>http://rosslawley.co.uk/2011/03/back-to-square-one</id>
     <content type="html"><![CDATA[<p>After a week of illness, that started with the kids and a&nbsp;norovirus style illness, I felt really fatigued and eventually got a cold, &nbsp;so I took a weeks rest and off training, no fun but recovery is important. &nbsp;</p>
 <p>I&#8217;ve decided to start the training back at week 1 and first off on Sunday, I did the BHF&#8217;s Knebworth house jog, a slightly disorganised and short 10k but a good hilly cross country run!</p>
 ]]></content>
@@ -189,9 +189,9 @@
   
   <entry>
     <title type="html"><![CDATA[Triathlon training]]></title>
-    <link href="http://rosslawley.co.uk/triathlon-training/"/>
+    <link href="http://rosslawley.co.uk/2011/02/triathlon-training/"/>
     <updated>2011-02-17T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/triathlon-training</id>
+    <id>http://rosslawley.co.uk/2011/02/triathlon-training</id>
     <content type="html"><![CDATA[<p>Wow February is marching on and I feel like I&#8217;ve rested up for a couple of weeks after Janathon! &nbsp;But in truth I have been to the pool and to the Gym a couple of times, I&#8217;ve cycled on boris bikes and on static (*yawn*) bikes. &nbsp;But somehow not having the obligation to do something daily has made it feel like I&#8217;ve been resting! &nbsp;</p>
 <p>What I have been focusing on recently is planning my training for the London Triathlon in just over 20 weeks.</p>
 <p>[[posterous-content:jBwduxGyCwewhnrDhdpD]]</p>
@@ -215,9 +215,9 @@
   
   <entry>
     <title type="html"><![CDATA[Janathon Done!]]></title>
-    <link href="http://rosslawley.co.uk/janathon-done/"/>
+    <link href="http://rosslawley.co.uk/2011/01/janathon-done/"/>
     <updated>2011-01-31T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/janathon-done</id>
+    <id>http://rosslawley.co.uk/2011/01/janathon-done</id>
     <content type="html"><![CDATA[<p>Wow! &nbsp;I&#8217;ve done it, I exercised every day in January! I started with a swim so I thought I&#8217;d end with a swim - not in the north sea but a few lengths of the swimming pool. I&#8217;m pleased with myself and I think it has set up a base level of activity that I can extend and improve over the coming months as I train for my triathlon in July.</p>
 <p>I really enjoyed the atmosphere; the tweets and the posts about janathon. The community made it easier and it was good to see that others encouraged people on and offered advice as well - great work all!</p>
 <p><span style="color: #444444; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; line-height: 20px; font-size: small;"><strong style="padding: 0px; margin: 0px;"><span style="font-size: 16px; font-weight: normal; padding: 0px; margin: 0px;"><strong style="padding: 0px; margin: 0px;">Stats Distance: 98.2 miles</strong></span></strong></span></p>
@@ -232,9 +232,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 31 - Quick commute]]></title>
-    <link href="http://rosslawley.co.uk/day-31-quick-commute/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-31-quick-commute/"/>
     <updated>2011-01-31T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-31-quick-commute</id>
+    <id>http://rosslawley.co.uk/2011/01/day-31-quick-commute</id>
     <content type="html"><![CDATA[<p>A quick commute today left me frustrated this morning as 2 local docks were all full and the map listed other ones nearby that didn&#8217;t exist! &nbsp;So it took nearly 10 minutes to find a dock! &nbsp;This was all because I went to see the doctor this morning about my knee - it all looks fine but I&#8217;ve been referred to a physio which will take some time..</p>
 <p style="margin-top: 15px; margin-right: 0px; margin-bottom: 18px; margin-left: 0px; color: #444444; font-size: 16px; line-height: 20px; padding: 0px;"><span style="color: #444444; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; line-height: 20px; font-size: small; padding: 0px; margin: 0px;"><strong style="padding: 0px; margin: 0px;"><span style="font-size: 16px; font-weight: normal; padding: 0px; margin: 0px;"><strong style="padding: 0px; margin: 0px;">Stats (Bike Totals):</strong></span></strong></span></p>
 <p style="margin-top: 15px; margin-right: 0px; margin-bottom: 18px; margin-left: 0px; color: #444444; font-size: 16px; line-height: 20px; padding: 0px;"><span style="color: #444444; line-height: 20px; font-size: small; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; padding: 0px; margin: 0px;"><strong style="padding: 0px; margin: 0px;"><span style="font-size: 16px; padding: 0px; margin: 0px;"><strong style="font-weight: normal; padding: 0px; margin: 0px;">Distance</strong><span style="font-weight: normal; padding: 0px; margin: 0px;">: 4.51 mi</span><br style="padding: 0px; margin: 0px;" /><strong style="font-weight: normal; padding: 0px; margin: 0px;">Duration</strong><span style="font-weight: normal; padding: 0px; margin: 0px;">: 00:31:28</span><br style="padding: 0px; margin: 0px;" /><strong style="font-weight: normal; padding: 0px; margin: 0px;">Avg. Pace</strong><span style="font-weight: normal; padding: 0px; margin: 0px;">: 6:74min/mi</span></span></strong></span></p>
@@ -244,9 +244,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 30 - Run, Gym, Run]]></title>
-    <link href="http://rosslawley.co.uk/day-30-run-gym-run/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-30-run-gym-run/"/>
     <updated>2011-01-30T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-30-run-gym-run</id>
+    <id>http://rosslawley.co.uk/2011/01/day-30-run-gym-run</id>
     <content type="html"><![CDATA[<p>Back to the gym for a core strength workout. Its amazing that in just 4 sessions my strength at some of the machines seems to have improved markedly. &nbsp;Probably more to do with getting use to dealing with lactic acid build up when doing weights, rather than an increase of strength but I&#8217;ll take any rewards as they come!</p>
 <p>The best bit about today was I ran to the Gym did a work out and then ran back - a real win as doing cardo work in the gym isn&#8217;t as fun and psychologically the gym has got a whole load closer to home!</p>
 <p><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><strong style="padding: 0px; margin: 0px;">Stats</strong></span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;">:</span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><br style="padding: 0px; margin: 0px;" /></span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><strong style="padding: 0px; margin: 0px;">Weights</strong></span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;">: 35 mins</span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><br style="padding: 0px; margin: 0px;" /></span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><strong style="padding: 0px; margin: 0px;">Cardo</strong></span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;">: 20 mins</span><span style="color: #444444; line-height: 20px; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: 16px;"><strong><br /></strong></span></p>
@@ -255,9 +255,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 29 - a run out]]></title>
-    <link href="http://rosslawley.co.uk/day-29-a-run-out/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-29-a-run-out/"/>
     <updated>2011-01-30T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-29-a-run-out</id>
+    <id>http://rosslawley.co.uk/2011/01/day-29-a-run-out</id>
     <content type="html"><![CDATA[<p>A crisp Saturday afternoon led to a great 30 minute run, on a route I first did last summer - when I was first starting out with running, I picked a&nbsp;half marathon as my target and wanted to include a bit of a hill and cross country to keep the training varied. &nbsp;This short run soon became a favourite before work run but had long been abandoned due to not enough light.</p>
 <p>A good blast round, my right knee was still giving me some gyp but not as bad as last week. &nbsp;So I finished off by doing a long session of stretching afterwards. I&#8217;m hoping for more answers on Monday when I&#8217;m off to see the doc.</p>
 <p><span style="font-size: 12px; line-height: 21px; color: #424037; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif;">
@@ -269,9 +269,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 28 - The lights are red]]></title>
-    <link href="http://rosslawley.co.uk/day-28-the-lights-are-red/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-28-the-lights-are-red/"/>
     <updated>2011-01-29T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-28-the-lights-are-red</id>
+    <id>http://rosslawley.co.uk/2011/01/day-28-the-lights-are-red</id>
     <content type="html"><![CDATA[<p>Back to normal on the cycling today, all and I mean all the lights were red this morning and I had to stop. &nbsp;Only other thing of note is all the docks in Kings Cross were full and I had to go find another dock to put the bike. &nbsp;Wow, living the dream!</p>
 <p><span style="color: #444444; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; line-height: 20px; font-size: small;"><strong style="padding: 0px; margin: 0px;"><span style="font-size: 16px; font-weight: normal; padding: 0px; margin: 0px;"><strong style="padding: 0px; margin: 0px;">Stats (Bike Totals):</strong></span></strong></span></p>
 <p><span style="color: #444444; line-height: 20px; font-size: small; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif;"><strong style="padding: 0px; margin: 0px;"><span style="font-size: 16px; padding: 0px; margin: 0px;"><strong style="font-weight: normal; padding: 0px; margin: 0px;">Distance</strong><span style="font-weight: normal;">: 3.52 mi</span><br style="padding: 0px; margin: 0px;" /><strong style="font-weight: normal; padding: 0px; margin: 0px;">Duration</strong><span style="font-weight: normal;">: 00:24:58</span><br style="padding: 0px; margin: 0px;" /><strong style="font-weight: normal; padding: 0px; margin: 0px;">Avg. Pace</strong><span style="font-weight: normal;">: 7:06min/mi</span></span></strong></span></p>
@@ -280,9 +280,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 27 - All the lights are green]]></title>
-    <link href="http://rosslawley.co.uk/day-27-all-the-lights-are-green/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-27-all-the-lights-are-green/"/>
     <updated>2011-01-27T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-27-all-the-lights-are-green</id>
+    <id>http://rosslawley.co.uk/2011/01/day-27-all-the-lights-are-green</id>
     <content type="html"><![CDATA[<p>Wow - what a cycle ride this morning! &nbsp;All the lights were green and it was smooth riding all the way - under 10 mins! &nbsp;Cycle home was less good but its all helping me get used to cycling. I love running and cycling still feels alien but if I&#8217;m to do a triathlon its something I have to master.</p>
 <p><span style="color: #444444; font-family: Helvetica Neue, Helvetica, Arial, Verdana, Tahoma, sans-serif; font-size: small;"><span style="line-height: 20px;"><strong><span style="font-size: 16px; font-weight: normal;"><strong style="padding: 0px; margin: 0px;">Stats (Bike Totals):</strong><br style="padding: 0px; margin: 0px;" /><strong style="padding: 0px; margin: 0px;">Distance</strong>: 3.36 mi<br style="padding: 0px; margin: 0px;" /><strong style="padding: 0px; margin: 0px;">Duration</strong>: 00:21:38<br style="padding: 0px; margin: 0px;" /><strong style="padding: 0px; margin: 0px;">Avg. Pace</strong>: 6:16min/mi</span></strong></span></span></p>
 ]]></content>
@@ -290,9 +290,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 26 - Gymtastic]]></title>
-    <link href="http://rosslawley.co.uk/day-26-gymtastic/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-26-gymtastic/"/>
     <updated>2011-01-26T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-26-gymtastic</id>
+    <id>http://rosslawley.co.uk/2011/01/day-26-gymtastic</id>
     <content type="html"><![CDATA[<p>Well it was up and at em today! &nbsp;I was in the gym for 6:30 so I could get my janathon fix in for the day. &nbsp;I still feel self conscious at the gym - hoping that will wear off as I get used to the equipment and the gym.</p>
 <p>Focusing on upper body / core strength I found it a little easier this time than last!</p>
 <p><strong>Stats</strong>:<br /><strong>Weights</strong>: 35 mins<br /><strong>Cardo</strong>: 5 mins (rowing to cool down)<br /><strong>Stretches</strong>: 5 (very self conscious) mins (I haven&#8217;t noticed anyone else doing stretches..)</p>
@@ -301,9 +301,9 @@
   
   <entry>
     <title type="html"><![CDATA[Day 25 - Was Christmas only a month ago??]]></title>
-    <link href="http://rosslawley.co.uk/day-25-was-christmas-only-a-month-ago/"/>
+    <link href="http://rosslawley.co.uk/2011/01/day-25-was-christmas-only-a-month-ago/"/>
     <updated>2011-01-26T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/day-25-was-christmas-only-a-month-ago</id>
+    <id>http://rosslawley.co.uk/2011/01/day-25-was-christmas-only-a-month-ago</id>
     <content type="html"><![CDATA[<p>Nothing much to report today, cycled to and from work to the station. &nbsp;The <strong>only</strong>&nbsp;thing of note is all the bikes in on dock were bust, so I had to tappy lappy over to the next nearest dock. &nbsp; Apparently, there is a convention is to turn the seat facing backwards if its bust, so from now on I will do!</p>
 <p>Oh and the other thing of note, is really a note to self; when going from a new dock think about the route before you end up being stuck on a one way stretch sandwiched imbetween two buses&#8230;</p>
 <p><strong>Stats (Bike Totals):</strong><br /><strong>Distance</strong>: 3.42 mi<br /><strong>Duration</strong>: 00:25:04<br /><strong>Avg. Pace</strong>: 7:19min/mi</p>

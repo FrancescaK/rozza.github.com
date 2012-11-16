@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: NAT | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/nat/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[How to configure VM Fusion NAT to be visible on port 80 of the host]]></title>
+    <link href="http://rosslawley.co.uk/2010/08/2010-how-to-configure-vm-fusion-nat-to-be./"/>
+    <updated>2010-08-13T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/08/2010-how-to-configure-vm-fusion-nat-to-be.</id>
+    <content type="html"><![CDATA[<p>I do <em>all</em> my development on VMWares, as they are cheap and easy to setup and mimic the real deployment environment.  I've always used NAT networking on my vmwares rather than put them on the network as standalone bridged items, however, recently I was asked to "share" my latest code on the network.  My host hacks didn't get translated so I needed to to forward the port 80 traffic from the Mac to the VM</p>
+
+
+<p>Turns out its easy - <a href="http://www.virtuatopia.com/index.php/VMware_Server_NAT_Configuration#.5Bincomingtcp.5D">nat.conf</a> is the key. Just add the configuration to</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>/Library/Application\ Support/VMware\ Fusion/vmnet8/nat.conf</pre></div>
+</div>
+
+
+
+
+<p>in the incomingtcp configuration.</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>[incomingtcp]
+80 = IP_OF_THE_VMWARE:80</pre></div>
+</div>
+
+
+
+
+<p>And restart the vmware networking:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>sudo /Library/Application\ Support/VMware\ Fusion/boot.sh --restart</pre></div>
+</div>
+
+
+
+
+<p>&nbsp;</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3350553347337058838?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

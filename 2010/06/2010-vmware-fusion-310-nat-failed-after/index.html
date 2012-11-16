@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>VMware Fusion 3.1.0 NAT failed after upgrade - Ross Lawley</title>
+
+  
+  <meta name="description" content="Tweet VMware Fusion 3.1.0 NAT Failed After Upgrade Jun 15th, 2010 I upgraded my vmware fusion and found that all my NAT networking connections &hellip;">
+  <meta name="keywords" content="Ross Lawley, rozza, rossc0, mongoengine, 10gen, coding, programming, python, scala, mongodb, evangelism">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ross Lawley" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-716284-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Ross Lawley</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Ross Lawley</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">Some thoughts and musings</h2>
+  </li>
+
+  <li class="link">
+    Python engineering evangelist and trainee triathlete!
+  </li>
+
+  <li class="link">
+    <a href="http://twitter.com/RossC0/">twitter</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/rozza/">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+  
+    <li>
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:rosslawley.co.uk" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+    </li>
+    
+</ul>
+
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <article class="post">
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/" data-via="RossC0" data-counturl="http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/">Tweet</a>
+
+  
+  
+  
+</div>
+
+  
+  <header>
+    
+      <h2 class="entry-title">VMware Fusion 3.1.0 NAT Failed After Upgrade</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-15T00:00:00+00:00" pubdate data-updated="true">Jun 15<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<p>I upgraded my vmware fusion and found that all my NAT networking connections stopped working.After much googling and poking around I couldnt find any answers. I found my Bridge networking was working fine, so how to fix NAT?  Well after kicking the vmware networking on MAC with:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo /Library/Application\ Support/VMware\ Fusion/boot.sh --restart</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>I saw lots of permission errors and repair messages on the first run. Once I ran it again I still got the following error in the traceback:</p>
+<div class="CodeRay">
+  <div class="code"><pre>Permissions differ on &quot;Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter&quot;, should be -rwxr-xr-x , they are -rwsr-xr-x .
+Warning: SUID file 'Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter' has been modified and will not be repaired.</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>So to fix I simply changed the permissions to be as they should be!</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo chmod 755 &quot;/Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter&quot;
+sudo /Library/Application\ Support/VMware\ Fusion/boot.sh --restart</pre></div>
+</div>
+
+<p>That came up with no errors, so I just restarted networking on my vmwares and volia! All fixed!On my ubuntu vm&#8217;s I had to remove my networking rules and restart - like so:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo rm /etc/udev/rules.d/70-persistent-net.rules
+sudo reboot</pre></div>
+</div>
+
+<p>&nbsp;</p>
+
+
+
+</article>
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rozza';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/';
+        var disqus_url = 'http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

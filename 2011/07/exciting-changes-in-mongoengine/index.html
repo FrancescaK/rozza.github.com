@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Exciting changes in MongoEngine. - Ross Lawley</title>
+
+  
+  <meta name="description" content="Tweet Exciting Changes in MongoEngine. Jul 26th, 2011 For the last few months at work we&#8217;ve been adopting MongoDB as our main database. For &hellip;">
+  <meta name="keywords" content="Ross Lawley, rozza, rossc0, mongoengine, 10gen, coding, programming, python, scala, mongodb, evangelism">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Ross Lawley" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-716284-3']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Ross Lawley</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Ross Lawley</a></h1>
+  </li>
+
+
+  <li class="subtitle">
+    <h2 id="subtitle">Some thoughts and musings</h2>
+  </li>
+
+  <li class="link">
+    Python engineering evangelist and trainee triathlete!
+  </li>
+
+  <li class="link">
+    <a href="http://twitter.com/RossC0/">twitter</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/rozza/">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+  
+    <li>
+    <form action="http://google.com/search" method="get">
+      <fieldset role="search">
+        <input type="hidden" name="q" value="site:rosslawley.co.uk" />
+        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+      </fieldset>
+    </form>
+    </li>
+    
+</ul>
+
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <article class="post">
+  <div class="sharing-box">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/" data-via="RossC0" data-counturl="http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/">Tweet</a>
+
+  
+  
+  
+</div>
+
+  
+  <header>
+    
+      <h2 class="entry-title">Exciting Changes in MongoEngine.</h2>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-07-26T00:00:00+00:00" pubdate data-updated="true">Jul 26<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<p>For the last few months at work <a href="http://streetlife.com" target="_blank">we&#8217;ve</a> been adopting MongoDB as our main database. For those that don&#8217;t know what MongoDB is and you&#8217;re still reading this?!  &#8221;<em>MongoDB is an open source, document-oriented database designed with both scalability and developer agility in mind. Instead of storing your data in tables and rows as you would with a relational database, in MongoDB you store JSON-like documents with dynamic schemas.</em>&#8221;</p>
+<p>Coming from a Django background, <a href="http://mongoengine.org/" target="_blank">MongoEngine</a> &#8221;<em>a Document-Object Mapper (think ORM, but for document databases) for working with MongoDB from Python</em>&#8221; seemed a natural choice.  Since joining the project, as well as fixing numerous bugs, we&#8217;ve added many new features to MongoEngine core.</p>
+<p>Here are some of my favourites:</p>
+<ul>
+<li>Added complex Dictionary / List fields - Which&nbsp;can store any complex data you require; other dictionaries, lists, references.</li>
+<li>Signal support -&nbsp;pre and post save / delete.</li>
+<li>Subfield slicing - for retrieving parts of subsets of lists.</li>
+<li>Abstract Base Classes - Helps keep your document definitions dry</li>
+<li>Custom Object Managers - When used with Astract Base Classes you can easily apply behaviour across all querysets.</li>
+<li>Delta tracking - Now save on an existing object, atomically updates only what has been changed.  Making it super efficient and so easy to use, without having to worrying about race conditions.</li>
+<li>Select Related support - Now generic / reference fields can use select_related to minimise the number of queries to mongo.</li>
+<li>query_counter - A context manager, that helps you determine the cost of some queries / code.</li>
+</ul>
+<p>Some of the above, I&#8217;ll blog about in more depth in the near future as especially the delta tracking is pretty cool. &nbsp;In the near future the 0.5 release will be out - its on the dev branch if you want to play with it now. &nbsp;With more ideas / suggestions for improvements being added to&nbsp;<a href="https://github.com/hmarr/mongoengine/issues" target="_blank">github</a>, it seems that MongoEngine will only get better.  So why not signup to the <a href="http://groups.google.com/group/mongoengine-users" target="_blank">usergroup</a> and join in the discussion.</p>
+<p>[[posterous-content:jDpAqsCwazsorHzpxatC]]</p>
+
+
+
+</article>
+
+  <section class="comments">
+    <h2>Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'rozza';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/';
+        var disqus_url = 'http://rosslawley.co.uk/2011/07/exciting-changes-in-mongoengine/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+</body>
+</html>

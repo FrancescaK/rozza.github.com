@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: nginx | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/nginx/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Planning to Scale]]></title>
+    <link href="http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html/"/>
+    <updated>2010-02-22T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html</id>
+    <content type="html"><![CDATA[<p>Recently at <a href="http://thisisglobal.com/">Global Radio</a> we recently relaunched <a href="http://www.heart.co.uk/">Heart FM</a>, which now is a conglomeration of 33 local heart station websites, where previously it was 33 individual sites.  So to achieve this the team refactored our inhouse CMS to handle these localisations in as sane a way as possible. With the aim being that with the CMS our editors could easily manage and share content across these <em>sites</em> and make it easy to localise any aspect of the page, where one or more stations wants to differ from the norm.</p>
+
+
+<p>This resulted in a fairly large scale refactoring of the CMS to clean up and simplify the logic of the system.  The end result of that work is an editor can now; localise, schedule or symlink (share across pages / locations) any aspect of the page.  This work has resulted in an extremely flexible and powerful system, but also has has thrown up an number of challenges - one of which is how to make the website scale effectively and this is the focus of the post.</p>
+
+
+<h2>Targets</h2>
+
+
+<p>The first rule of scaling is to have something to aim for:</p>
+
+
+<blockquote class="posterous_short_quote"><p>"Premature optimization is the root of all evil" - without being focused then your optimisations are likely to focus on the wrong areas.</p></blockquote>
+
+
+<p>I remember early in my career people discussing large databases and the differences in perception of what "<em>large is</em>" can be huge.  So before you begin to optimise your site, you should at least know what you want to aim form, otherwise you are likely to waste time, effort and money and not focus on what actually matters.  For Heart we know we have to deal with traffic surges similar to the "digg effect", so our aim is to be able to deilver content under this periods of extreme traffic.</p>
+
+
+<h2>Remove bottlenecks</h2>
+
+
+<p>For our sites the <strong>main bottleneck</strong> is the database.  This is no surprise as, databases are often a bottleneck in dynamic websites and a number of approaches can be taken to minimise its impact.  At Global we have written a flexible CMS that is complex in that it allows <em>n</em> levels of nesting, scheduling, localising and sharing of modules on a page. But on the whole our sites don't produce complex and dynamic output, there are elements of that, but on the whole its a magazine / news style site, with hub pages highlighting articles, competitions and galleries within the site. </p>
+
+
+<p>During the refactoring as features neared completion in the CMS we used <a href="http://github.com/robhudson/django-debug-toolbar">Rob Hudson's Django Debug Toolbar</a> to keep an eye on query count.  We kept down the number of queries using a number of approaches; where possible we cached, memoized, ensured that we used the ORM efficiently and made sure that we didn't repeat queries over and over.  Daniel Roseman has written some great posts on <a href="http://blog.roseman.org.uk/tags/patterns/">Django Patterns</a> sharing some insights learnt whilst refactoring the CMS and improving its performance, so I won't repeat them here.</p>
+
+
+<p>Another bottleneck we had and again the debug toolbar provides this information was the number of templates it could take to render a page, as this problem had been identified and fixed in Django 1.2 with a relatively small patch we backported it to our version of Django.</p>
+
+
+<h2>Caching</h2>
+
+
+<p>Caching is incredibly important, most of the data on our pages is relatively static. Initially we looked at baking all the static parts of the pages to disk on creation or change of data in the CMS.  This looked ideal, with that in place we could just use these pages as templates themselves and render any dynamic parts, therefore saving many queries and bypassing lots of logic.  However, due to the flexibility of the CMS, if you factor in the localisations, symlinking and scheduling of modules on a page it wasn't as simple and robust an approach as hoped so was binned as it just wasn't worth the cost of building and maintaining it.  However, I would recommend this approach, if its feasible as it makes sense to keep as much static stuff static.  There is no need to force every user to rebuild part or sometimes all of the page if its non changing or infrequently changing data.</p>
+
+
+<p>We liked the idea of caching the static parts and rendering the dynamic parts of the page and time based caching provided a simple and easy solution.  However, when dealing with the "digg effect" our aim is to <em>always</em> serve the page and to help us do that, we decided that if the dynamic parts were failing under the load, then just serving the cached page, without the dynamic elements was preferable to serving a "fail whale".</p>
+
+
+<h2>Caching with Nginx</h2>
+
+
+<p>Nginx, Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>), proxies and proxy caching provided a solution to managing high load out of the box.  The proxy_cache is faster than using memcached and can be made semi persistent, SSIs provide a mechanism to replace dynamic blocks in the cached page and even allow you handle if the rendering the ssi fails for any reason.  For us and our site its a great solution to keeping the site up.  </p>
+
+
+<p>Heres the request / response flow:</p>
+
+
+<div class="separator" style="">[[posterous-content:njuJuehynfxlDlAaeIdx]]</div>
+
+
+<p>Shamelessly adapted from James Gardener (<a href="http://jimmyg.org/blog/2009/ssi-memcached-nginx.html">SSI, Memcached and Nginx (plus Varnish, ESI and static generation)</a>)</p>
+
+
+<p>With Nginx we set the cache timeout to be low, but more importantly we keep the cache on disk for a longer period of time, so if anything happens to the django backend we can still serve:</p>
+
+
+<div class="separator" style="clear: both; text-align: center;">[[posterous-content:zCHBlgdfqBDvArkyrzvu]]</div>
+
+
+<h2>Conclusions</h2>
+
+
+<p>This provides us with a robust solution, that can allow us to handle large surges in traffic and makes us resilient if the backend goes away for any reason.  There is a cost, we lose some dynamic parts of the site,  whether or not we have found <strong>the</strong> correct solution <em>for us</em> only time will tell, but for now we've solved a problem.</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3776006375541355811?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx how to; Server Side Include (SSI) debugging]]></title>
+    <link href="http://rosslawley.co.uk/2010/01/2010-nginx-how-to-server-side-include-ssi/"/>
+    <updated>2010-01-25T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/01/2010-nginx-how-to-server-side-include-ssi</id>
+    <content type="html"><![CDATA[<p>Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>) are a great feature of <a href="http://wiki.nginx.org/">Nginx</a> allowing you to cache core content of a page but dynamically replace any blocks of the page that are dynamic, for example login links / welcome text.  But they can sometimes hold some gotchas, so heres a post on debugging SSI or debugging Nginx configs in general.</p>
+
+
+<p>I spent a morning debugging on Nginx when SSI's weren't acting as expected - they were missing! including the stubs and I was losing markup on the page.  When dealing with SSI's here are two key rules:</p>
+
+
+<ul>
+<li>SSI's must be well formed - otherwise funny things happen!</li>
+<li>Debugging isn't always easy, but patience is key!</li>
+</ul>
+
+
+<p></p>
+
+
+<h2>SSI's must be well formed</h2>
+
+
+<p>Funny things happen when your SSI syntax is malformed!  But finding the cause isn't always easy.</p>
+
+
+<h2>What's wrong with this snippet?</h2>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>&lt;!--# block name=&quot;default_message&quot; --&gt;  &lt;p&gt;Sorry, this feature is currently unavailable&lt;/p&gt;&lt;!-- endblock --&gt;&lt;!--# include virtual=&quot;/dynamic/footer-links&quot; stub=&quot;default_message&quot; --&gt;</pre></div>
+</div>
+
+
+<p>The results of the above snippet is all content / markup after it is truncated!</p>
+
+
+<h2>Debugging SSI's</h2>
+
+
+<p>Firstly, turn off <a href="http://wiki.nginx.org/NginxHttpSsiModule#ssi_silent_errors">Silent Errors</a> in your config like so:<br /></p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>ssi_silent_errors off;</pre></div>
+</div>
+
+
+<p>You should see in the browser any errors outputted as "[an error occurred while processing the directive]" if there has been an error with the SSI.<p></p><p>If you are using a proxy - check the proxy access logs to ensure that the requests are being made by Nginx!  If they are ensure that they are rendering the expected output.</p><p>Next step is to check what Nginx is doing, turn on debugging and logging of SSI's in your Nginx config:</p><div class="CodeRay">
+  <div class="code"><pre>error_log   /var/log/nginx/error.log debug;    log_subrequest  on;</pre></div>
+</div></p>
+
+<p>The error log will now start to report all logic steps and actions for requests made to it - they are quite extensive!  You are looking for all SSI includes:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>... [debug] 1545#0: *2 ssi include: &quot;/dynamic/user_status_bar/&quot;</pre></div>
+</div>
+
+
+<p>If your SSI include isn't listed - then check your markup!  It probably is malformed like mine above - I was missing a # from the endblock tag it should have read:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>&lt;!--# block name=&quot;default_message&quot; --&gt;  &lt;p&gt;Sorry, this feature is currently unavailable&lt;/p&gt;&lt;!--# endblock --&gt;&lt;!--# include virtual=&quot;/dynamic/footer-links&quot; stub=&quot;default_message&quot; --&gt;</pre></div>
+</div>
+
+
+<p>That simple typo cost me a morning, so check your markup!  What actually was happening was that Nginx got all the SSI but it couldn't find the endblock and silently errored and discarded the rest of the content.</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-7842838834265480624?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx how to; Url cleaning - removing multiple slashes]]></title>
+    <link href="http://rosslawley.co.uk/2010/01/2010-nginx-how-to-url-cleaning-removing/"/>
+    <updated>2010-01-10T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/01/2010-nginx-how-to-url-cleaning-removing</id>
+    <content type="html"><![CDATA[<p>Carrying on with my short posts on configuring <a href="http://www.nginx.org/">Nginx</a>, heres an easy tip to ensure that all urls are clean, multiple slashes are removed and redirected to the cleaned url eg: <a href="http://example.com//search/">http://example.com//search/</a> and will be redirected to: <a href="http://example.com">http://example.com</a>.</p>
+
+
+<h2>**<a href="#fixed">Updated Sept 15th</a></h2>
+
+
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+  # $uri is a cleaned version of the url
+  # so we test against the $requested_uri
+  set $clean_uri        $uri$is_args$args;
+  if ( $clean_uri != $request_uri ) {
+    rewrite ^/(.*)      $scheme://$host/$1    permanent;
+  }</pre></div>
+</div>
+
+
+
+
+<p>This will stop you serving the same content on multiple urls which has SEO implications.  In the past I have written <a href="http://wsgi.org/wsgi/Middleware_and_Utilities">middleware</a> to do the check and redirects, but as the Nginx <a href="http://wiki.nginx.org/NginxHttpProxyModule">Proxy Module</a> uses the cleaned $uri the middleware <em><strong>never sees</strong></em> the multiples slashes and doesn't know without looking at X-Headers that it is serving an invalid url.</p>
+
+
+<p><em>*</em> Wondering why the redirect doesn't redirect to itself?  The <a href="http://www.regular-expressions.info/">regular expression</a> just captures everything after the first slash!  Well the <a href="http://wiki.nginx.org/NginxHttpRewriteModule#rewrite"> rewrite module</a> also uses the cleaned $uri!</p>
+
+
+<h3><span style="text-decoration: line-through;">** Update: June 24th</span></h3>
+
+
+<p>It seems that you can get into a nasty redirect loop, so if your just cleaning double slashes you can use this:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    if ($request_uri ~* &quot;\/\/&quot;) {
+      rewrite ^/(.*)      $scheme://$host/$1    permanent;
+    }</pre></div>
+</div>
+
+
+
+
+<p>&nbsp;</p>
+
+
+<h3>** Update: Sept 15th</h3>
+
+
+<p><a href="http://www.topper.me.uk/" rel="friend">Jon Topper</a> found a bug with the previous fix - <a href="http://www.example.com//">http://www.example.com//</a>?//  would cause a redirect loop.  He posted in the comments a fix and I'm putting here so its easier to read.  Thanks Jon.</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    # Tested against:
+    #   http://www.example.com//
+    #   http://www.example.com/w//w//w//
+    #   http://www.example.com//?//
+    set $test_uri $scheme://$host$request_uri;
+    if ($test_uri != $scheme://$host$uri$is_args$args) {
+        rewrite ^ $scheme://$host$uri$is_args$args? permanent;
+    }</pre></div>
+</div>
+
+
+
+
+<p>&nbsp;</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3020550632646606946?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Nginx how to multiple if statements]]></title>
+    <link href="http://rosslawley.co.uk/2010/01/2010-nginx-how-to-multiple-if-statements/"/>
+    <updated>2010-01-04T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2010/01/2010-nginx-how-to-multiple-if-statements</id>
+    <content type="html"><![CDATA[<p>I've been doing a lot of <a href="http://wiki.nginx.org/Main">Nginx</a> configuration tweaking recently, due to some complex requirements for a virtual host I'm writing for a relaunch due later this month.  As I came across a couple of gotchas and problems that required a lot of head scratching, googling and trawling through the <a href="http://forum.nginx.org/">forums</a>, I thought I'd write a series of short posts to try and help any other folk that may have similar Nginx configuration problems in the future.</p>
+
+
+<h2>Multiple if statements</h2>
+
+
+<p>As Nginx doesn't allow multiple or nested if statements you can't do something like:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>if ($request_method = POST &amp;&amp; $http_cookie ~* &quot;CCCC=.+(?:;|$)&quot;)</pre></div>
+</div>
+
+
+
+
+<p>However, you can set variables and you can do if statements on variables so this can be rewritten:</p>
+
+
+<div class="CodeRay">
+  <div class="code"><pre>if ($request_method = POST) {
+    set $test  P;
+  }
+
+  if ($http_cookie ~* &quot;CCCC=.+(?:;|$)&quot; ) {
+    set $test  &quot;${test}C&quot;;
+  }
+
+  if ($test = PC) {
+    #rewrite rule goes here.
+  }</pre></div>
+</div>
+
+
+
+
+<p>As you can use regular expressions on if statements this method allows you to do both &amp;&amp; and | checks.</p>
+
+
+<p>The example is taken from a hidden away example on the <a href="http://wiki.nginx.org/NginxRewriteMultiCondExample">wiki</a> but as it took me ages to find hopefully it will help you to.</p>
+
+
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-2211604193438918013?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+]]></content>
+  </entry>
+  
+</feed>

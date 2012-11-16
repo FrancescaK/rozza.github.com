@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: presentation | Ross Lawley]]></title>
+  <link href="http://rosslawley.co.uk/categories/presentation/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T16:29:54+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
+  <author>
+    <name><![CDATA[Ross Lawley]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[mongoDB Brussels - An introduction to mongoDB]]></title>
+    <link href="http://rosslawley.co.uk/2012/02/mongodb-brussels-an-introduction-to-mongodb/"/>
+    <updated>2012-02-07T00:00:00+00:00</updated>
+    <id>http://rosslawley.co.uk/2012/02/mongodb-brussels-an-introduction-to-mongodb</id>
+    <content type="html"><![CDATA[<p>Here are my slides from my introduction to mongoDB talk at the Brussels mongoDB user group.</p>
+
+
+<p><script async class="speakerdeck-embed" data-id="4f30411d2ed25800220039ff" data-ratio="1.33333333333333" src="http://rosslawley.co.uk//speakerdeck.com/assets/embed.js"></script>
+<a href="http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction">http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction</a></p>
+
+]]></content>
+  </entry>
+  
+</feed>
