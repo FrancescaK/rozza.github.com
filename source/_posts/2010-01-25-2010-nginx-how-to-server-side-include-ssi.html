@@ -9,7 +9,8 @@ categories:
 - configuration
 - nginx
 posterous_url: http://rosslawley.co.uk/2010/01/nginx-how-to-server-side-include-ssi.html
-posterous_slug: 2010/01/nginx-how-to-server-side-include-ssi.html
+redirects:
+- /2010/01/nginx-how-to-server-side-include-ssi.html
 ---
 <p>Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>) are a great feature of <a href="http://wiki.nginx.org/">Nginx</a> allowing you to cache core content of a page but dynamically replace any blocks of the page that are dynamic, for example login links / welcome text.  But they can sometimes hold some gotchas, so heres a post on debugging SSI or debugging Nginx configs in general.</p><p>I spent a morning debugging on Nginx when SSI's weren't acting as expected - they were missing! including the stubs and I was losing markup on the page.  When dealing with SSI's here are two key rules:</p><ul>
 <li>SSI's must be well formed - otherwise funny things happen!</li>

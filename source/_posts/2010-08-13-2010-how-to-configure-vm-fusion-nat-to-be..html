@@ -10,7 +10,8 @@ categories:
 - tech
 - vmware
 posterous_url: http://rosslawley.co.uk/2010/08/how-to-configure-vm-fusion-nat-to-be.html
-posterous_slug: 2010/08/how-to-configure-vm-fusion-nat-to-be.html
+redirects:
+- /2010/08/how-to-configure-vm-fusion-nat-to-be.html
 ---
 <p>I do <em>all</em> my development on VMWares, as they are cheap and easy to setup and mimic the real deployment environment.  I've always used NAT networking on my vmwares rather than put them on the network as standalone bridged items, however, recently I was asked to "share" my latest code on the network.  My host hacks didn't get translated so I needed to to forward the port 80 traffic from the Mac to the VM</p>
 <p>Turns out its easy - <a href="http://www.virtuatopia.com/index.php/VMware_Server_NAT_Configuration#.5Bincomingtcp.5D">nat.conf</a> is the key. Just add the configuration to</p>

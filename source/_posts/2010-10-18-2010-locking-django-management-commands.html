@@ -14,7 +14,8 @@ categories:
 - python
 - tech
 posterous_url: http://rosslawley.co.uk/2010/10/locking-django-management-commands.html
-posterous_slug: 2010/10/locking-django-management-commands.html
+redirects:
+- /2010/10/locking-django-management-commands.html
 ---
 <p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
 <p>So I created a decorator that would add a locking file based on the current module file name, which would ensure that there is only ever one process running at any time.  Then all I have to do is simply decorate my management commands by applying the decorator to the handle method like so:</p>

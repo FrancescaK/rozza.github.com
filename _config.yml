@@ -27,7 +27,7 @@ email:
 
 # To maintain your posterous links use the below permalink config
 
-permalink: /:title/
+permalink: /:year/:month/:title/
 
 # If publishing to a subdirectory as in http://site.com/project set 'root: /project'
 root: /
@@ -35,9 +35,13 @@ source: source
 destination: public
 plugins: plugins
 code_dir: downloads/code
-category_dir: blog/categories
+category_dir: categories
 markdown: rdiscount
 pygments: false # default python pygments have been replaced by pygments.rb
+
+description: Ross Lawley my musings and personal blog.
+keywords: Ross Lawley, rozza, rossc0, mongoengine, 10gen, coding, programming, python, scala, mongodb, evangelism
+redirects: true
 
 paginate: 6          # Posts per page on the blog index
 pagination_dir: blog  # Directory base for pagination URLs eg. /blog/page/2/
