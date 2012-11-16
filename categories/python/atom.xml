@@ -4,7 +4,7 @@
   <title><![CDATA[Category: python | Ross Lawley]]></title>
   <link href="http://rosslawley.co.uk/categories/python/atom.xml" rel="self"/>
   <link href="http://rosslawley.co.uk/"/>
-  <updated>2012-11-16T16:29:54+00:00</updated>
+  <updated>2012-11-16T16:43:14+00:00</updated>
   <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[Locking Django management commands]]></title>
-    <link href="http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands/"/>
+    <link href="http://rosslawley.co.uk/2010/10/locking-django-management-commands/"/>
     <updated>2010-10-18T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands</id>
+    <id>http://rosslawley.co.uk/2010/10/locking-django-management-commands</id>
     <content type="html"><![CDATA[<p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
 
 
@@ -103,9 +103,9 @@ class Command(BaseCommand):
   
   <entry>
     <title type="html"><![CDATA[Resetting South Migrations]]></title>
-    <link href="http://rosslawley.co.uk/2010/09/2010-resetting-south-migrations/"/>
+    <link href="http://rosslawley.co.uk/2010/09/resetting-south-migrations/"/>
     <updated>2010-09-28T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/09/2010-resetting-south-migrations</id>
+    <id>http://rosslawley.co.uk/2010/09/resetting-south-migrations</id>
     <content type="html"><![CDATA[<p><a href="http://south.aeracode.org/">South</a> migrations are great but over time, as you write more and more they can become unwieldy and slow. This is exactly what happened at <a href="http://www.streetbook.com/">Streetbook</a>, we love fast iterations and releasing often - the only downside was the number of migrations grew and grew to over a hundred. So we bit the bullet and reset them, it was less traumatic than I initially feared and we got the number of migrations down to just ten.  As I couldn't find an easy step by step guide I thought I'd jot this down for others as a quick guide.</p>
 
 
@@ -209,9 +209,9 @@ MigrationHistory.objects.all().delete()</pre></div>
   
   <entry>
     <title type="html"><![CDATA[Planning to Scale]]></title>
-    <link href="http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html/"/>
+    <link href="http://rosslawley.co.uk/2010/02/planning-to-scale_22/"/>
     <updated>2010-02-22T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html</id>
+    <id>http://rosslawley.co.uk/2010/02/planning-to-scale_22</id>
     <content type="html"><![CDATA[<p>Recently at <a href="http://thisisglobal.com/">Global Radio</a> we recently relaunched <a href="http://www.heart.co.uk/">Heart FM</a>, which now is a conglomeration of 33 local heart station websites, where previously it was 33 individual sites.  So to achieve this the team refactored our inhouse CMS to handle these localisations in as sane a way as possible. With the aim being that with the CMS our editors could easily manage and share content across these <em>sites</em> and make it easy to localise any aspect of the page, where one or more stations wants to differ from the norm.</p>
 
 

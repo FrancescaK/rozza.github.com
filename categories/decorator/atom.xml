@@ -4,7 +4,7 @@
   <title><![CDATA[Category: decorator | Ross Lawley]]></title>
   <link href="http://rosslawley.co.uk/categories/decorator/atom.xml" rel="self"/>
   <link href="http://rosslawley.co.uk/"/>
-  <updated>2012-11-16T16:29:54+00:00</updated>
+  <updated>2012-11-16T16:43:14+00:00</updated>
   <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Locking Django management commands]]></title>
-    <link href="http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands/"/>
+    <link href="http://rosslawley.co.uk/2010/10/locking-django-management-commands/"/>
     <updated>2010-10-18T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/10/2010-locking-django-management-commands</id>
+    <id>http://rosslawley.co.uk/2010/10/locking-django-management-commands</id>
     <content type="html"><![CDATA[<p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
 
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: networking | Ross Lawley]]></title>
   <link href="http://rosslawley.co.uk/categories/networking/atom.xml" rel="self"/>
   <link href="http://rosslawley.co.uk/"/>
-  <updated>2012-11-16T16:29:54+00:00</updated>
+  <updated>2012-11-16T16:43:14+00:00</updated>
   <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[VMware Fusion 3.1.0 NAT failed after upgrade]]></title>
-    <link href="http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after/"/>
+    <link href="http://rosslawley.co.uk/2010/06/vmware-fusion-310-nat-failed-after/"/>
     <updated>2010-06-15T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/06/2010-vmware-fusion-310-nat-failed-after</id>
+    <id>http://rosslawley.co.uk/2010/06/vmware-fusion-310-nat-failed-after</id>
     <content type="html"><![CDATA[<p>I upgraded my vmware fusion and found that all my NAT networking connections stopped working.After much googling and poking around I couldnt find any answers. I found my Bridge networking was working fine, so how to fix NAT?  Well after kicking the vmware networking on MAC with:</p>
 
 

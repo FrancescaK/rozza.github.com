@@ -4,7 +4,7 @@
   <title><![CDATA[Category: scaling | Ross Lawley]]></title>
   <link href="http://rosslawley.co.uk/categories/scaling/atom.xml" rel="self"/>
   <link href="http://rosslawley.co.uk/"/>
-  <updated>2012-11-16T16:29:54+00:00</updated>
+  <updated>2012-11-16T16:43:14+00:00</updated>
   <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Planning to Scale]]></title>
-    <link href="http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html/"/>
+    <link href="http://rosslawley.co.uk/2010/02/planning-to-scale_22/"/>
     <updated>2010-02-22T00:00:00+00:00</updated>
-    <id>http://rosslawley.co.uk/2010/02/2010-planning-to-scale_22.html</id>
+    <id>http://rosslawley.co.uk/2010/02/planning-to-scale_22</id>
     <content type="html"><![CDATA[<p>Recently at <a href="http://thisisglobal.com/">Global Radio</a> we recently relaunched <a href="http://www.heart.co.uk/">Heart FM</a>, which now is a conglomeration of 33 local heart station websites, where previously it was 33 individual sites.  So to achieve this the team refactored our inhouse CMS to handle these localisations in as sane a way as possible. With the aim being that with the CMS our editors could easily manage and share content across these <em>sites</em> and make it easy to localise any aspect of the page, where one or more stations wants to differ from the norm.</p>
 
 
