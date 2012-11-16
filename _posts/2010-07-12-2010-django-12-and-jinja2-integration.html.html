@@ -1,0 +1,19 @@
+---
+layout: post
+title: Django 1.2 and Jinja2 integration
+published: true
+date: 2010-07-12
+categories:
+- django
+- integration
+- jinja2
+- tech
+- template
+posterous_url: http://rosslawley.co.uk/2010/07/django-12-and-jinja2-integration.html
+posterous_slug: 2010/07/django-12-and-jinja2-integration.html
+---
+<p>Recently, I needed some more presentation logic in my html templates than django templating language would allow, so I looked into getting <a href="http://www.djangoproject.com/">Django 1.2</a> and <a href="http://jinja.pocoo.org/2/">Jinja2</a> playing nicely.</p>
+<p>The main caveat is I also use the admin and have legacy parts of the site that still use the old django templates.  So I was hoping to do both and it turned out to be easy!  I can even review the context in the <a href="http://github.com/robhudson/django-debug-toolbar">Django Debug Toolbar</a>.</p>
+<p>The Gist for it is <a href="http://gist.github.com/472309">here</a>, just add a setting for the Jinja2 template directory and away you go!</p>
+<p><script src="https://gist.github.com/472309.js?file=django_jinja.py"></script></p>
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-791605223425875560?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
