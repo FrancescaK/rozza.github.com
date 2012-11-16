@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: swimming | Ross Lawley]]></title>
-  <link href="http://rozza.github.com/blog/categories/swimming/atom.xml" rel="self"/>
-  <link href="http://rozza.github.com/"/>
-  <updated>2012-11-16T14:26:36+00:00</updated>
-  <id>http://rozza.github.com/</id>
+  <link href="http://rosslawley.co.uk/blog/categories/swimming/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T15:07:16+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Bedford Sprint Series 1 - 24th April]]></title>
-    <link href="http://rozza.github.com/bedford-sprint-series-1-24th-april/"/>
+    <link href="http://rosslawley.co.uk/bedford-sprint-series-1-24th-april/"/>
     <updated>2011-05-04T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/bedford-sprint-series-1-24th-april</id>
+    <id>http://rosslawley.co.uk/bedford-sprint-series-1-24th-april</id>
     <content type="html"><![CDATA[<p>Thanks to <a href="http://www.galeforce-events.com/sprintseries.htm" title="Galeforce sprint series" target="_blank">Galeforce events</a> for putting on a great event, it was my first real sprint triathlon - I did one back in 2003 but with no training I don't really count it.</p>
 
 

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: mongo | Ross Lawley]]></title>
-  <link href="http://rozza.github.com/blog/categories/mongo/atom.xml" rel="self"/>
-  <link href="http://rozza.github.com/"/>
-  <updated>2012-11-16T14:26:36+00:00</updated>
-  <id>http://rozza.github.com/</id>
+  <link href="http://rosslawley.co.uk/blog/categories/mongo/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T15:07:16+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoEngine 0.5 Released!]]></title>
-    <link href="http://rozza.github.com/mongoengine-05-released/"/>
+    <link href="http://rosslawley.co.uk/mongoengine-05-released/"/>
     <updated>2011-09-10T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/mongoengine-05-released</id>
+    <id>http://rosslawley.co.uk/mongoengine-05-released</id>
     <content type="html"><![CDATA[<p>Hurray!&nbsp;<a href="http://mongoengine.org">MongoEngine</a> 0.5 has finally been released!</p>
 
 
@@ -56,9 +56,9 @@
   
   <entry>
     <title type="html"><![CDATA[Exciting changes in MongoEngine.]]></title>
-    <link href="http://rozza.github.com/exciting-changes-in-mongoengine/"/>
+    <link href="http://rosslawley.co.uk/exciting-changes-in-mongoengine/"/>
     <updated>2011-07-26T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/exciting-changes-in-mongoengine</id>
+    <id>http://rosslawley.co.uk/exciting-changes-in-mongoengine</id>
     <content type="html"><![CDATA[<p>For the last few months at work <a href="http://streetlife.com" target="_blank">we've</a> been adopting MongoDB as our main database. For those that don't know what MongoDB is and you're still reading this?!  "<em>MongoDB is an open source, document-oriented database designed with both scalability and developer agility in mind. Instead of storing your data in tables and rows as you would with a relational database, in MongoDB you store JSON-like documents with dynamic schemas.</em>"</p>
 
 

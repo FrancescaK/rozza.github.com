@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: migrations | Ross Lawley]]></title>
-  <link href="http://rozza.github.com/blog/categories/migrations/atom.xml" rel="self"/>
-  <link href="http://rozza.github.com/"/>
-  <updated>2012-11-16T14:26:36+00:00</updated>
-  <id>http://rozza.github.com/</id>
+  <link href="http://rosslawley.co.uk/blog/categories/migrations/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T15:07:16+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Resetting South Migrations]]></title>
-    <link href="http://rozza.github.com/2010-resetting-south-migrations.html/"/>
+    <link href="http://rosslawley.co.uk/2010-resetting-south-migrations.html/"/>
     <updated>2010-09-28T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/2010-resetting-south-migrations.html</id>
+    <id>http://rosslawley.co.uk/2010-resetting-south-migrations.html</id>
     <content type="html"><![CDATA[<p><a href="http://south.aeracode.org/">South</a> migrations are great but over time, as you write more and more they can become unwieldy and slow. This is exactly what happened at <a href="http://www.streetbook.com/">Streetbook</a>, we love fast iterations and releasing often - the only downside was the number of migrations grew and grew to over a hundred. So we bit the bullet and reset them, it was less traumatic than I initially feared and we got the number of migrations down to just ten.  As I couldn't find an easy step by step guide I thought I'd jot this down for others as a quick guide.</p>
 
 

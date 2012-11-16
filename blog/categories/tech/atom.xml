@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: tech | Ross Lawley]]></title>
-  <link href="http://rozza.github.com/blog/categories/tech/atom.xml" rel="self"/>
-  <link href="http://rozza.github.com/"/>
-  <updated>2012-11-16T14:26:36+00:00</updated>
-  <id>http://rozza.github.com/</id>
+  <link href="http://rosslawley.co.uk/blog/categories/tech/atom.xml" rel="self"/>
+  <link href="http://rosslawley.co.uk/"/>
+  <updated>2012-11-16T15:07:16+00:00</updated>
+  <id>http://rosslawley.co.uk/</id>
   <author>
     <name><![CDATA[Ross Lawley]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[NoSQL Devroom @ fosdem 2013]]></title>
-    <link href="http://rozza.github.com/nosql-devroom-fosdem-2013/"/>
+    <link href="http://rosslawley.co.uk/nosql-devroom-fosdem-2013/"/>
     <updated>2012-11-12T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/nosql-devroom-fosdem-2013</id>
+    <id>http://rosslawley.co.uk/nosql-devroom-fosdem-2013</id>
     <content type="html"><![CDATA[<p>Awesome news after a hiatus of 3 years theres going to be a NoSql devroom at <a href="https://fosdem.org/2013/" title="fosdem 2013" target="_blank">fosdem</a> in february. &nbsp;If you don't know fosdem - its a great conference based in Brussels covering all things open source, theres no registration, just turn up with the other 5,000 free and open source fans.</p>
 
 
@@ -31,9 +31,9 @@
   
   <entry>
     <title type="html"><![CDATA[Flask-MongoEngine extension released!]]></title>
-    <link href="http://rozza.github.com/flask-mongoengine-extension-released/"/>
+    <link href="http://rosslawley.co.uk/flask-mongoengine-extension-released/"/>
     <updated>2012-05-18T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/flask-mongoengine-extension-released</id>
+    <id>http://rosslawley.co.uk/flask-mongoengine-extension-released</id>
     <content type="html"><![CDATA[<p>After using <a href="http://flask.pocoo.org" title="Flask framework" target="_blank">Flask</a>&nbsp;and <a href="http://mongoengine.org" title="mongoengine - python mongo odm" target="_blank">MongoEngine</a> together for sometime, I've finally got round to publishing the extension on pypi - installing is simple: pip install flask-mongoengine. &nbsp;The documentation is here:&nbsp;<a href="http://readthedocs.org/docs/flask-mongoengine">http://readthedocs.org/docs/flask-mongoengine</a></p>
 
 
@@ -46,16 +46,16 @@
 <p>Full <a href="http://wtforms.simplecodes.com/docs/dev/">WTForms</a> support including ModelForms and built in <a href="http://flask-debugtoolbar.readthedocs.org/">Flask-Debugtoolbar</a> support:</p>
 
 
-<p><img src="http://rozza.github.com/images/debugtoolbar.png" /></p>
+<p><img src="http://rosslawley.co.uk/images/debugtoolbar.png" /></p>
 
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Near Nuremburg in April? Come see me talk at OSDC.de]]></title>
-    <link href="http://rozza.github.com/near-nuremburg-in-april-come-see-me-talk-at-o/"/>
+    <link href="http://rosslawley.co.uk/near-nuremburg-in-april-come-see-me-talk-at-o/"/>
     <updated>2012-03-23T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/near-nuremburg-in-april-come-see-me-talk-at-o</id>
+    <id>http://rosslawley.co.uk/near-nuremburg-in-april-come-see-me-talk-at-o</id>
     <content type="html"><![CDATA[<p>I've just got back from a buzzing mongoDB Berlin - it was a great event with lots of developers wanting to learn more about <a href="http://mongodb.org" title="MongoDB" target="_blank">mongoDB</a>. What struck me most was the level of interest in Germany for mongoDB and the general enthusiasm around web and computing technology; from big data to agile methodology and devops to high scalability.</p>
 
 
@@ -75,9 +75,9 @@
   
   <entry>
     <title type="html"><![CDATA[MongoEngine 0.6 Released!]]></title>
-    <link href="http://rozza.github.com/mongoengine-06-released/"/>
+    <link href="http://rosslawley.co.uk/mongoengine-06-released/"/>
     <updated>2012-03-05T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/mongoengine-06-released</id>
+    <id>http://rosslawley.co.uk/mongoengine-06-released</id>
     <content type="html"><![CDATA[<p>Sorry for the delay, a few final things snuck into 0.6 to get the release in really good shape.</p>
 
 
@@ -105,13 +105,13 @@
   
   <entry>
     <title type="html"><![CDATA[mongoDB Brussels - An introduction to mongoDB]]></title>
-    <link href="http://rozza.github.com/mongodb-brussels-an-introduction-to-mongodb/"/>
+    <link href="http://rosslawley.co.uk/mongodb-brussels-an-introduction-to-mongodb/"/>
     <updated>2012-02-07T00:00:00+00:00</updated>
-    <id>http://rozza.github.com/mongodb-brussels-an-introduction-to-mongodb</id>
+    <id>http://rosslawley.co.uk/mongodb-brussels-an-introduction-to-mongodb</id>
     <content type="html"><![CDATA[<p>Here are my slides from my introduction to mongoDB talk at the Brussels mongoDB user group.</p>
 
 
-<p><script async class="speakerdeck-embed" data-id="4f30411d2ed25800220039ff" data-ratio="1.33333333333333" src="http://rozza.github.com//speakerdeck.com/assets/embed.js"></script>
+<p><script async class="speakerdeck-embed" data-id="4f30411d2ed25800220039ff" data-ratio="1.33333333333333" src="http://rosslawley.co.uk//speakerdeck.com/assets/embed.js"></script>
 <a href="http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction">http://speakerdeck.com/u/rozza/p/mongodb-brussels-mongodb-an-introduction</a></p>
 
 ]]></content>
