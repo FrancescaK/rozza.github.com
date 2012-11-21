@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Lessons learnt building mongoengine"
-date: 2012-11-21 09:49
+date: 2012-11-22 10:00
 published: false
 comments: true
 categories:
@@ -12,11 +12,11 @@ categories:
 - pycon uk
 ---
 
-Recently, I attended both [Pycon UK](http://www.pyconuk.org/) and [Pycon Ireland](http://python.ie/pycon/2012/) to talk about the lessons I have learnt whilst maintaining [mongoengine](http://mongoengine.org).  The conferences were both excellent and surprisingly different. Pycon UK had quite an *"unconference"* feel, with some exciting sprint rooms - I wish I had more time as by all reports the [educational jam](https://github.com/ntoll/pyconuk-education-sprint-2012) was inspirational.  Pycon Ireland in contrast felt more slick with booths from DemonWare, Amazon and Facebook.  If you can, I'd advise going to both conferences as they really complement each other.
+Recently, I attended both [Pycon UK](http://www.pyconuk.org/) and [Pycon Ireland](http://python.ie/pycon/2012/) to talk about the lessons I have learnt while maintaining [mongoengine](http://mongoengine.org).  The conferences were both excellent and surprisingly different. Pycon UK had quite an *"unconference"* feel, with some exciting sprint rooms - I wish I had more time as by all reports the [educational jam](https://github.com/ntoll/pyconuk-education-sprint-2012) was inspirational.  Pycon Ireland in contrast felt more slick with booths from DemonWare, Amazon and Facebook.  If you can, I'd advise going to both conferences as they really complement each other.
 
 Going to python conferences its great to see ever increasing numbers of developers adopting [MongoDB](http://mongodb.org), its such a good fit for python!  Also, I can't tell you how _great_ it is to have people come up and thank you and [10gen](http://10gen.com) for creating such a great product.  Databases aren't exactly sexy technology but as a 10gen engineer one of our core aims is to build upon the power and ease of use of mongoDB.
 
-Back to the matter at hand, here's a quick overview of the talk.  Please check out the slides for all the detail I glazed over here and for the extra keen you can even watch the talk as well!
+Back to the matter at hand, here's a quick overview of the talk.  Please check out the [slides](#slides) for all the detail I glazed over here and for the extra keen you can even [watch the video](#video) as well!
 
 ## Lessons learnt building mongoengine TL;DR
 
@@ -38,8 +38,9 @@ Back to the matter at hand, here's a quick overview of the talk.  Please check o
 6. Don't be afraid to ask for help<br>
   Cue me asking for help on any aspect of mongoengine, be it the core, the website or framework support!  Please get in contact :)
 
-## Slides
+## <a id="slides"></a> Slides
 
 <script async class="speakerdeck-embed" data-id="507adf49f29efa00020740df" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
+<a id="video"></a>
 The video is available on the [PyCon Ireland channel](http://www.youtube.com/watch?v=N-S_yuhZtAw).
