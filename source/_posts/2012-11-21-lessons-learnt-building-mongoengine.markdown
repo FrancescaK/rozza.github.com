@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Lessons learnt building mongoengine"
-date: 2012-11-22 10:00
-published: false
+date: 2012-11-29 14:50
+published: true
 comments: true
 categories:
 - mongodb
