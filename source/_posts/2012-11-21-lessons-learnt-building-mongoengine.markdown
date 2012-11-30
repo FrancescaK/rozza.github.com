@@ -33,7 +33,7 @@ Back to the matter at hand, here's a quick overview of the talk.  Please check o
   In mongoDB the native save operation overwrites the whole document.  This catches new users out.  So in mongonengine save tracks changes to the document and uses [atomic updates](http://www.mongodb.org/display/DOCS/Atomic+Operations).  The jury is out whether or not this is a good thing™.
 
 5. Managing a community <br>
-  I've never done it before and its not always easy but it has been worth it.  My top tip is to check out the [github network graph](https://github.com/MongoEngine/mongoengine/network) and ask committers to forks to add pull requests back upstream. In cases where people aren't willing to do so add a ticket with a link to the feature you've spotted downstream.  An added benefit of bubbling up these useful features is that it will bringing more contributors into the core project.
+  I've never done it before and its not always easy but it has been worth it.  My top tip is to check out the [github network graph](https://github.com/MongoEngine/mongoengine/network) and ask committers to forks to add pull requests back upstream. In cases where people aren't willing to do so add a ticket with a link to the feature you've spotted downstream.  An added benefit of bubbling up these useful features is that it will bring more contributors into the core project.
 
 6. Don't be afraid to ask for help<br>
   Cue me asking for help on any aspect of mongoengine, be it the core, the website or framework support!  Please get in contact :)
