@@ -127,7 +127,7 @@ header#sidebar h1#title {
   font-size: 15px;
   letter-spacing: 0;
   text-transform: uppercase;
-  font-family: "Rokkitt",serif;
+  font-family: "Open Sans",serif;
   font-weight: 900;
   line-height: 15px;
   padding: 10px;
@@ -157,7 +157,7 @@ header#sidebar h1#title a {
   margin-left: 0;
 }
 
-header#sidebar h2#subtitle {
+header#sidebar .subtitle {
   font-weight: 300;
   font-size: 16px;
   line-height: 23px;
@@ -202,7 +202,7 @@ header#sidebar h2#subtitle {
     line-height: 35px;
   }
 
-  header#sidebar h2#subtitle {
+  header#sidebar .subtitle {
     font-size: 20px;
     line-height: 25px;
   }
@@ -320,7 +320,7 @@ article.post {
 
 section.comments {
   width: auto;
-  max-width: 500px;
+  max-width: 600px;
   position: relative;
   padding-left: 50px;
   overflow-x: hidden;
@@ -328,11 +328,11 @@ section.comments {
 
 article.post h2, article.post p, article.post .gist,
 article.post ul, article.post {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 article.post figure {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 // Anchor
