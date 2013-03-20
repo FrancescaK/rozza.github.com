@@ -209,13 +209,13 @@ header#sidebar .subtitle {
 }
 
 // Short screen
-@media only screen and (max-height: 650px) {
+@media only screen and (max-height: 850px) {
   #sidebar {
     position: absolute;
   }
 
   #octopress_linkback {
-    top: 700px;
+    top: 800px;
     position: absolute;
   }
 }

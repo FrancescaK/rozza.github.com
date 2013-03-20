@@ -13,11 +13,17 @@
 {% endif %}
 {% if site.subtitle %}
   <li class="subtitle">
-    <h2 class="subtitle">{{ site.subtitle }}</h2>
+    <h2>{{ site.subtitle }}</h2>
+    <p>
+      Python and Scala engineer for 10gen. Dad and trainee triathlete!
+    </p>
   </li>
 {% endif %}
-  <li class="link subtitle">
-    Python and Scala engineer for 10gen.<br>Dad and trainee triathlete!
+  <li class="promo center">
+    <a href="http://www.10gen.com/events/mongodb-london-2013">
+    <img src="/images/2013/mongodblondon.png" title="Next speaking at MongoDB London">
+    <small>Come see me talk about Data Processing and Aggregation on April 9th.</small>
+   </a>
   </li>
 {% if site.twitter_user %}
   <li class="link">
@@ -29,10 +35,7 @@
     <a href="http://github.com/{{ site.github_user }}/">github</a>
   </li>
 {% endif %}
-  <li class="link rss">
-    <a href="/atom.xml">rss feed</a>
-  </li>
-  {% if site.simple_search %}
+{% if site.simple_search %}
     <li>
     <form action="{{ site.simple_search }}" method="get">
       <fieldset role="search">
@@ -44,16 +47,3 @@
     {% endif %}
 </ul>
 
-
-
-<!-- Octopress Love -->
-<aside id="octopress_linkback">
-  <a href="http://octopress.org/">
-    <span class="unicode_square">
-      <span class="unicode_circle">
-        &nbsp;
-      </span>
-    </span>
-    <span class="octopress">Powered by Octopress</span>
-  </a>
-</aside>
