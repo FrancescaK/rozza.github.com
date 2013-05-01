@@ -20,8 +20,12 @@ Why a release candidate?
 ------------------------
 
 There have been massive changes in the internals, requiring thought and
-**testing** before upgrading and releasing to the wild.  I think the changes are
-worth it and make using [MongoEngine](http://mongoengine.org) even better.
+**testing** before upgrading and releasing to the wild - so please
+read the [upgrade](http://docs.mongoengine.org/en/latest/upgrade.html#to-0-8)
+docs carefully!
+
+The changes are worth it and make using [MongoEngine](http://mongoengine.org)
+even better.
 
 Please test 0.8.0RC1 on your test systems and staging systems and any feedback
 please email the [user group](https://groups.google.com/group/mongoengine-users)
