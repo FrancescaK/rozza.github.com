@@ -12,6 +12,9 @@ categories:
 - python
 ---
 
+**Notice: ** 0.8.0RC2 has been released fixing an obscure queryset cursor cloning issue.
+
+
 I'm really pleased to annouce the release candidate for [MongoEngine 0.8](https://pypi.python.org/pypi/mongoengine/0.8.0RC1)!
 Its been a *long process* due to work and life commitments but the latest version
 of MongoEngine is ready for testing and feedback.
@@ -37,6 +40,8 @@ Whats changed?
 
 There have been loads of fixes, improvements and changes in 0.8.
 The headliners are:
+
+<!--more-->
 
   * Minimum requirements are python 2.6+ and pymongo 2.5+
   * Inheritance now off by default

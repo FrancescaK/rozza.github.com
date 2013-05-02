@@ -32,6 +32,8 @@ Then I remembered hearing about [boxen](http://boxen.github.com) which could giv
 My automation trifecta
 =======================
 
+<!--more-->
+
 Boxen
 -----
 

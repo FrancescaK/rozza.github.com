@@ -20,6 +20,8 @@ Back to the matter at hand, here's a quick overview of the talk.  Please check o
 
 ## Lessons learnt building mongoengine TL;DR
 
+<!--more-->
+
 1. Dive in! <br>
   If a project is on [Github](http://github.com/mongoengine/mongoengine) its a license to dive in.  Don't be afraid to, but do be a good citizen and feedback changes to the root repository so others can benefit.
 
