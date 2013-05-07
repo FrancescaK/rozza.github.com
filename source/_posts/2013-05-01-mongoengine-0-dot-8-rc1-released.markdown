@@ -13,6 +13,7 @@ categories:
 ---
 
 **Notice: ** 0.8.0RC3 has been released fixing a couple of small bugs and extra improvements.
+
 **Notice: ** 0.8.0RC2 has been released fixing an obscure queryset cursor cloning issue.
 
 
