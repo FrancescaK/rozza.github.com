@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Lessons learnt building mongoengine</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Lessons learnt building mongoengine</h2>
+<p class="meta">29 Nov 2012</p>
+
+<div class="post">
+<p>Recently, I attended both <a href="http://www.pyconuk.org/">Pycon UK</a> and <a href="http://python.ie/pycon/2012/">Pycon Ireland</a> to talk about the lessons I have learnt while maintaining <a href="http://mongoengine.org">mongoengine</a>.  The conferences were both excellent and surprisingly different. Pycon UK had quite an <em>&quot;unconference&quot;</em> feel, with some exciting sprint rooms - I wish I had more time as by all reports the <a href="https://github.com/ntoll/pyconuk-education-sprint-2012">educational jam</a> was inspirational.  Pycon Ireland in contrast felt more slick with booths from DemonWare, Amazon and Facebook.  If you can, I&#39;d advise going to both conferences as they really complement each other.</p>
+
+<p>Going to python conferences its great to see ever increasing numbers of developers adopting <a href="http://mongodb.org">MongoDB</a>, its such a good fit for python!  Also, I can&#39;t tell you how <em>great</em> it is to have people come up and thank you and <a href="http://10gen.com">10gen</a> for creating such a great product.  Databases aren&#39;t exactly sexy technology but as a 10gen engineer one of our core aims is to build upon the power and ease of use of mongoDB.</p>
+
+<p>Back to the matter at hand, here&#39;s a quick overview of the talk.  Please check out the <a href="#slides">slides</a> for all the detail I glazed over here and for the extra keen you can even <a href="#video">watch the video</a> as well!</p>
+
+<h2>Lessons learnt building mongoengine TL;DR</h2>
+
+<!--more-->
+
+<ol>
+<li><p>Dive in! <br>
+If a project is on <a href="http://github.com/mongoengine/mongoengine">Github</a> its a license to dive in.  Don&#39;t be afraid to, but do be a good citizen and feedback changes to the root repository so others can benefit.</p></li>
+<li><p>Metaclasses <br>
+Turns out they aren&#39;t magical! In fact how we use them in mongoengine allows us to change the class and add metadata at declaration time. This really useful trick makes creating instances of classes quick and easy.</p></li>
+<li><p>Straying from the path<br>
+Mongoengine uses a <a href="https://www.djangoproject.com/">Django</a> style query syntax.  This is bad in that its different from the native <a href="http://api.mongodb.org/python/current/">pymongo</a> syntax.  But its also good as you we add some sweet syntactic sugar.</p></li>
+<li><p>Not all ideas are good<br>
+In mongoDB the native save operation overwrites the whole document.  This catches new users out.  So in mongonengine save tracks changes to the document and uses <a href="http://www.mongodb.org/display/DOCS/Atomic+Operations">atomic updates</a>.  The jury is out whether or not this is a good thing™.</p></li>
+<li><p>Managing a community <br>
+I&#39;ve never done it before and its not always easy but it has been worth it.  My top tip is to check out the <a href="https://github.com/MongoEngine/mongoengine/network">github network graph</a> and ask committers to forks to add pull requests back upstream. In cases where people aren&#39;t willing to do so add a ticket with a link to the feature you&#39;ve spotted downstream.  An added benefit of bubbling up these useful features is that it will bring more contributors into the core project.</p></li>
+<li><p>Don&#39;t be afraid to ask for help<br>
+Cue me asking for help on any aspect of mongoengine, be it the core, the website or framework support!  Please get in contact :)</p></li>
+</ol>
+
+<h2><a id="slides"></a> Slides</h2>
+
+<script async class="speakerdeck-embed" data-id="507adf49f29efa00020740df" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+
+<p><a id="video"></a>
+The video is available on the <a href="http://www.youtube.com/watch?v=N-S_yuhZtAw">PyCon Ireland channel</a>.</p>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

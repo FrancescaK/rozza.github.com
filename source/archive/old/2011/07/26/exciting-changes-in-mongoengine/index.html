@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Exciting changes in MongoEngine.</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Exciting changes in MongoEngine.</h2>
+<p class="meta">26 Jul 2011</p>
+
+<div class="post">
+<p>For the last few months at work <a href="http://streetlife.com" target="_blank">we've</a> been adopting MongoDB as our main database. For those that don't know what MongoDB is and you're still reading this?!  "<em>MongoDB is an open source, document-oriented database designed with both scalability and developer agility in mind. Instead of storing your data in tables and rows as you would with a relational database, in MongoDB you store JSON-like documents with dynamic schemas.</em>"</p>
+<p>Coming from a Django background, <a href="http://mongoengine.org/" target="_blank">MongoEngine</a> "<em>a Document-Object Mapper (think ORM, but for document databases) for working with MongoDB from Python</em>" seemed a natural choice.  Since joining the project, as well as fixing numerous bugs, we've added many new features to MongoEngine core.</p>
+<p>Here are some of my favourites:</p>
+<ul>
+<li>Added complex Dictionary / List fields - Which&nbsp;can store any complex data you require; other dictionaries, lists, references.</li>
+<li>Signal support -&nbsp;pre and post save / delete.</li>
+<li>Subfield slicing - for retrieving parts of subsets of lists.</li>
+<li>Abstract Base Classes - Helps keep your document definitions dry</li>
+<li>Custom Object Managers - When used with Astract Base Classes you can easily apply behaviour across all querysets.</li>
+<li>Delta tracking - Now save on an existing object, atomically updates only what has been changed.  Making it super efficient and so easy to use, without having to worrying about race conditions.</li>
+<li>Select Related support - Now generic / reference fields can use select_related to minimise the number of queries to mongo.</li>
+<li>query_counter - A context manager, that helps you determine the cost of some queries / code.</li>
+</ul>
+<p>Some of the above, I'll blog about in more depth in the near future as especially the delta tracking is pretty cool. &nbsp;In the near future the 0.5 release will be out - its on the dev branch if you want to play with it now. &nbsp;With more ideas / suggestions for improvements being added to&nbsp;<a href="https://github.com/hmarr/mongoengine/issues" target="_blank">github</a>, it seems that MongoEngine will only get better.  So why not signup to the <a href="http://groups.google.com/group/mongoengine-users" target="_blank">usergroup</a> and join in the discussion.</p>
+<p>[[posterous-content:jDpAqsCwazsorHzpxatC]]</p>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Django 1.2 and Jinja2 integration</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Django 1.2 and Jinja2 integration</h2>
+<p class="meta">12 Jul 2010</p>
+
+<div class="post">
+<p>Recently, I needed some more presentation logic in my html templates than django templating language would allow, so I looked into getting <a href="http://www.djangoproject.com/">Django 1.2</a> and <a href="http://jinja.pocoo.org/2/">Jinja2</a> playing nicely.</p>
+<p>The main caveat is I also use the admin and have legacy parts of the site that still use the old django templates.  So I was hoping to do both and it turned out to be easy!  I can even review the context in the <a href="http://github.com/robhudson/django-debug-toolbar">Django Debug Toolbar</a>.</p>
+<p>The Gist for it is <a href="http://gist.github.com/472309">here</a>, just add a setting for the Jinja2 template directory and away you go!</p>
+<p><script src="https://gist.github.com/472309.js?file=django_jinja.py"></script></p>
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-791605223425875560?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

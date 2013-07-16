@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Planning to Scale</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Planning to Scale</h2>
+<p class="meta">22 Feb 2010</p>
+
+<div class="post">
+<p>Recently at <a href="http://thisisglobal.com/">Global Radio</a> we recently relaunched <a href="http://www.heart.co.uk/">Heart FM</a>, which now is a conglomeration of 33 local heart station websites, where previously it was 33 individual sites.  So to achieve this the team refactored our inhouse CMS to handle these localisations in as sane a way as possible. With the aim being that with the CMS our editors could easily manage and share content across these <em>sites</em> and make it easy to localise any aspect of the page, where one or more stations wants to differ from the norm.</p><p>This resulted in a fairly large scale refactoring of the CMS to clean up and simplify the logic of the system.  The end result of that work is an editor can now; localise, schedule or symlink (share across pages / locations) any aspect of the page.  This work has resulted in an extremely flexible and powerful system, but also has has thrown up an number of challenges - one of which is how to make the website scale effectively and this is the focus of the post.</p><h2>Targets</h2><p>The first rule of scaling is to have something to aim for:</p><blockquote class="posterous_short_quote"><p>"Premature optimization is the root of all evil" - without being focused then your optimisations are likely to focus on the wrong areas.</p></blockquote><p>I remember early in my career people discussing large databases and the differences in perception of what "<em>large is</em>" can be huge.  So before you begin to optimise your site, you should at least know what you want to aim form, otherwise you are likely to waste time, effort and money and not focus on what actually matters.  For Heart we know we have to deal with traffic surges similar to the "digg effect", so our aim is to be able to deilver content under this periods of extreme traffic.</p><h2>Remove bottlenecks</h2><p>For our sites the <strong>main bottleneck</strong> is the database.  This is no surprise as, databases are often a bottleneck in dynamic websites and a number of approaches can be taken to minimise its impact.  At Global we have written a flexible CMS that is complex in that it allows <em>n</em> levels of nesting, scheduling, localising and sharing of modules on a page. But on the whole our sites don't produce complex and dynamic output, there are elements of that, but on the whole its a magazine / news style site, with hub pages highlighting articles, competitions and galleries within the site. </p><p>During the refactoring as features neared completion in the CMS we used <a href="http://github.com/robhudson/django-debug-toolbar">Rob Hudson's Django Debug Toolbar</a> to keep an eye on query count.  We kept down the number of queries using a number of approaches; where possible we cached, memoized, ensured that we used the ORM efficiently and made sure that we didn't repeat queries over and over.  Daniel Roseman has written some great posts on <a href="http://blog.roseman.org.uk/tags/patterns/">Django Patterns</a> sharing some insights learnt whilst refactoring the CMS and improving its performance, so I won't repeat them here.</p><p>Another bottleneck we had and again the debug toolbar provides this information was the number of templates it could take to render a page, as this problem had been identified and fixed in Django 1.2 with a relatively small patch we backported it to our version of Django.</p><h2>Caching</h2><p>Caching is incredibly important, most of the data on our pages is relatively static. Initially we looked at baking all the static parts of the pages to disk on creation or change of data in the CMS.  This looked ideal, with that in place we could just use these pages as templates themselves and render any dynamic parts, therefore saving many queries and bypassing lots of logic.  However, due to the flexibility of the CMS, if you factor in the localisations, symlinking and scheduling of modules on a page it wasn't as simple and robust an approach as hoped so was binned as it just wasn't worth the cost of building and maintaining it.  However, I would recommend this approach, if its feasible as it makes sense to keep as much static stuff static.  There is no need to force every user to rebuild part or sometimes all of the page if its non changing or infrequently changing data.</p><p>We liked the idea of caching the static parts and rendering the dynamic parts of the page and time based caching provided a simple and easy solution.  However, when dealing with the "digg effect" our aim is to <em>always</em> serve the page and to help us do that, we decided that if the dynamic parts were failing under the load, then just serving the cached page, without the dynamic elements was preferable to serving a "fail whale".</p><h2>Caching with Nginx</h2><p>Nginx, Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>), proxies and proxy caching provided a solution to managing high load out of the box.  The proxy_cache is faster than using memcached and can be made semi persistent, SSIs provide a mechanism to replace dynamic blocks in the cached page and even allow you handle if the rendering the ssi fails for any reason.  For us and our site its a great solution to keeping the site up.  </p><p>Heres the request / response flow:</p><div class="separator" style="">[[posterous-content:njuJuehynfxlDlAaeIdx]]</div><p>Shamelessly adapted from James Gardener (<a href="http://jimmyg.org/blog/2009/ssi-memcached-nginx.html">SSI, Memcached and Nginx (plus Varnish, ESI and static generation)</a>)</p><p>With Nginx we set the cache timeout to be low, but more importantly we keep the cache on disk for a longer period of time, so if anything happens to the django backend we can still serve:</p><div class="separator" style="clear: both; text-align: center;">[[posterous-content:zCHBlgdfqBDvArkyrzvu]]</div><h2>Conclusions</h2><p>This provides us with a robust solution, that can allow us to handle large surges in traffic and makes us resilient if the backend goes away for any reason.  There is a cost, we lose some dynamic parts of the site,  whether or not we have found <strong>the</strong> correct solution <em>for us</em> only time will tell, but for now we've solved a problem.</p><div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3776006375541355811?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Nginx how to; Url cleaning - removing multiple slashes</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Nginx how to; Url cleaning - removing multiple slashes</h2>
+<p class="meta">10 Jan 2010</p>
+
+<div class="post">
+<h3>Update: 2012</h3>
+
+<p>This functionality is now natively available in Nginx see: <a href="http://nginx.org/en/docs/http/ngx_http_core_module.html#merge_slashes">merge slashes</a>.
+I'm not sure that will issue a 301 redirect, so the SEO implications may still be vaild.</p>
+<hr>
+<p>Carrying on with my short posts on configuring <a href="http://www.nginx.org/">Nginx</a>, heres an easy tip to ensure that all urls are clean, multiple slashes are removed and redirected to the cleaned url eg: <a href="http://example.com//search/">http://example.com//search/</a> and will be redirected to: <a href="http://example.com">http://example.com/search/</a>.</p>
+<h2>**<a href="#fixed">Updated Sept 15th</a></h2>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+  # $uri is a cleaned version of the url
+  # so we test against the $requested_uri
+  set $clean_uri        $uri$is_args$args;
+  if ( $clean_uri != $request_uri ) {
+    rewrite ^/(.*)      $scheme://$host/$1    permanent;
+  }</pre></div>
+</div>
+
+<p>This will stop you serving the same content on multiple urls which has SEO implications.  In the past I have written <a href="http://wsgi.org/wsgi/Middleware_and_Utilities">middleware</a> to do the check and redirects, but as the Nginx <a href="http://wiki.nginx.org/NginxHttpProxyModule">Proxy Module</a> uses the cleaned $uri the middleware <em><strong>never sees</strong></em> the multiples slashes and doesn't know without looking at X-Headers that it is serving an invalid url.</p>
+<p><em>*</em> Wondering why the redirect doesn't redirect to itself?  The <a href="http://www.regular-expressions.info/">regular expression</a> just captures everything after the first slash!  Well the <a href="http://wiki.nginx.org/NginxHttpRewriteModule#rewrite"> rewrite module</a> also uses the cleaned $uri!</p>
+<h3><span style="text-decoration: line-through;">** Update: June 24th</span></h3>
+<p>It seems that you can get into a nasty redirect loop, so if your just cleaning double slashes you can use this:</p>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    if ($request_uri ~* &quot;\/\/&quot;) {
+      rewrite ^/(.*)      $scheme://$host/$1    permanent;
+    }</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<h3>** Update: Sept 15th 2010</h3>
+<p><a href="http://www.topper.me.uk/" rel="friend">Jon Topper</a> found a bug with the previous fix - <a href="http://www.example.com//">http://www.example.com//</a>?//  would cause a redirect loop.  He posted in the comments a fix and I'm putting here so its easier to read.  Thanks Jon.</p>
+<div class="CodeRay">
+  <div class="code"><pre># Remove any multislashes in the url
+    # Tested against:
+    #   http://www.example.com//
+    #   http://www.example.com/w//w//w//
+    #   http://www.example.com//?//
+    set $test_uri $scheme://$host$request_uri;
+    if ($test_uri != $scheme://$host$uri$is_args$args) {
+        rewrite ^ $scheme://$host$uri$is_args$args? permanent;
+    }</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-3020550632646606946?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

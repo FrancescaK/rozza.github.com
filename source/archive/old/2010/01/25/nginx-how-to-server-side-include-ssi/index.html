@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Nginx how to; Server Side Include (SSI) debugging</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Nginx how to; Server Side Include (SSI) debugging</h2>
+<p class="meta">25 Jan 2010</p>
+
+<div class="post">
+<p>Server Side Includes (<a href="http://wiki.nginx.org/NginxHttpSsiModule">SSI</a>) are a great feature of <a href="http://wiki.nginx.org/">Nginx</a> allowing you to cache core content of a page but dynamically replace any blocks of the page that are dynamic, for example login links / welcome text.  But they can sometimes hold some gotchas, so heres a post on debugging SSI or debugging Nginx configs in general.</p><p>I spent a morning debugging on Nginx when SSI's weren't acting as expected - they were missing! including the stubs and I was losing markup on the page.  When dealing with SSI's here are two key rules:</p><ul>
+<li>SSI's must be well formed - otherwise funny things happen!</li>
+<li>Debugging isn't always easy, but patience is key!</li>
+</ul><p></p><h2>SSI's must be well formed</h2><p>Funny things happen when your SSI syntax is malformed!  But finding the cause isn't always easy.</p><h2>What's wrong with this snippet?</h2><div class="CodeRay">
+  <div class="code"><pre>&lt;!--# block name=&quot;default_message&quot; --&gt;  &lt;p&gt;Sorry, this feature is currently unavailable&lt;/p&gt;&lt;!-- endblock --&gt;&lt;!--# include virtual=&quot;/dynamic/footer-links&quot; stub=&quot;default_message&quot; --&gt;</pre></div>
+</div>
+<p>The results of the above snippet is all content / markup after it is truncated!</p><h2>Debugging SSI's</h2><p>Firstly, turn off <a href="http://wiki.nginx.org/NginxHttpSsiModule#ssi_silent_errors">Silent Errors</a> in your config like so:<br /></p><div class="CodeRay">
+  <div class="code"><pre>ssi_silent_errors off;</pre></div>
+</div>
+You should see in the browser any errors outputted as "[an error occurred while processing the directive]" if there has been an error with the SSI.<p></p><p>If you are using a proxy - check the proxy access logs to ensure that the requests are being made by Nginx!  If they are ensure that they are rendering the expected output.</p><p>Next step is to check what Nginx is doing, turn on debugging and logging of SSI's in your Nginx config:</p><div class="CodeRay">
+  <div class="code"><pre>error_log   /var/log/nginx/error.log debug;    log_subrequest  on;</pre></div>
+</div>
+<p>The error log will now start to report all logic steps and actions for requests made to it - they are quite extensive!  You are looking for all SSI includes:</p><div class="CodeRay">
+  <div class="code"><pre>... [debug] 1545#0: *2 ssi include: &quot;/dynamic/user_status_bar/&quot;</pre></div>
+</div>
+<p>If your SSI include isn't listed - then check your markup!  It probably is malformed like mine above - I was missing a # from the endblock tag it should have read:</p><div class="CodeRay">
+  <div class="code"><pre>&lt;!--# block name=&quot;default_message&quot; --&gt;  &lt;p&gt;Sorry, this feature is currently unavailable&lt;/p&gt;&lt;!--# endblock --&gt;&lt;!--# include virtual=&quot;/dynamic/footer-links&quot; stub=&quot;default_message&quot; --&gt;</pre></div>
+</div>
+<p>That simple typo cost me a morning, so check your markup!  What actually was happening was that Nginx got all the SSI but it couldn't find the endblock and silently errored and discarded the rest of the content.</p><div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-7842838834265480624?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

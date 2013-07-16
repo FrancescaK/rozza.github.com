@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Is web based configuration considered harmful?</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Is web based configuration considered harmful?</h2>
+<p class="meta">14 Apr 2010</p>
+
+<div class="post">
+<p>Recently, Apache was compromised by a XSS attack (<a href="https://blogs.apache.org/infra/entry/apache_org_04_09_2010">apache.org incident report for 04/09/2010</a>).</p><p>Someone posted an issue on their JIRA instance containing a shorted URL, which had an XSS attack that stole the user's session cookie.  Some admin users subsequently clicked on the link and their session was stolen and the JIRA based admin was compromised.  The hackers now had access to the JIRA instance admin, but from that point they gained root access to one machine and shell access to another.</p><h2>From bad to worse</h2><p>How did the hackers with administrator privileges in JIRA escalate to root access on one server and shell access on another?  Via <strong>web based configuration</strong>.  This allowed the attackers to change the upload root of files to an <em>executable</em> directory, from there they uploaded JSPs that gave them backdoor access to the file system.  From there the hackers modified JIRA and started collecting entered passwords, and then sent reset password notifications to all users and then they farmed the new passwords!  One of the collected passwords was the same as the user's shell account and from there they continued the attack.</p><h2>Lessons learnt</h2><p>Firstly, full credit to Apache for being open and honest about the attack, it really does help educate people on the seriousness of XSS attacks and how one seemingly innocent url lead to full control over a server.  People should take note, XSS is not trivial and the attack on Apache certainly wasn't.</p><p>I have to admit web based configuration is infinitely preferable to me, over writing reams of XML configuration!  However, it is vulnerable and accessible to attack!  So lock it down and minimise risk.  Don't make the administration urls accessible to the whole web!  Make it accessible via a VPN only or limit it to certain IP's range and minimise the risk.</p><div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-43089792524721203?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

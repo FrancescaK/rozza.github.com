@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>VMware Fusion 3.1.0 NAT failed after upgrade</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>VMware Fusion 3.1.0 NAT failed after upgrade</h2>
+<p class="meta">15 Jun 2010</p>
+
+<div class="post">
+<p>I upgraded my vmware fusion and found that all my NAT networking connections stopped working.After much googling and poking around I couldnt find any answers. I found my Bridge networking was working fine, so how to fix NAT?  Well after kicking the vmware networking on MAC with:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo /Library/Application\ Support/VMware\ Fusion/boot.sh --restart</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>I saw lots of permission errors and repair messages on the first run. Once I ran it again I still got the following error in the traceback:</p>
+<div class="CodeRay">
+  <div class="code"><pre>Permissions differ on &quot;Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter&quot;, should be -rwxr-xr-x , they are -rwsr-xr-x .
+Warning: SUID file 'Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter' has been modified and will not be repaired.</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>So to fix I simply changed the permissions to be as they should be!</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo chmod 755 &quot;/Library/Application Support/VMware Fusion/VMDKMounter.app/Contents/MacOS/vmware-vmdkMounter&quot;
+sudo /Library/Application\ Support/VMware\ Fusion/boot.sh --restart</pre></div>
+</div>
+
+<p>That came up with no errors, so I just restarted networking on my vmwares and volia! All fixed!On my ubuntu vm's I had to remove my networking rules and restart - like so:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo rm /etc/udev/rules.d/70-persistent-net.rules
+sudo reboot</pre></div>
+</div>
+
+<p>&nbsp;</p>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

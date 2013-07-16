@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Nginx how to multiple if statements</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Nginx how to multiple if statements</h2>
+<p class="meta">04 Jan 2010</p>
+
+<div class="post">
+<p>I've been doing a lot of <a href="http://wiki.nginx.org/Main">Nginx</a> configuration tweaking recently, due to some complex requirements for a virtual host I'm writing for a relaunch due later this month.  As I came across a couple of gotchas and problems that required a lot of head scratching, googling and trawling through the <a href="http://forum.nginx.org/">forums</a>, I thought I'd write a series of short posts to try and help any other folk that may have similar Nginx configuration problems in the future.</p>
+<h2>Multiple if statements</h2>
+<p>As Nginx doesn't allow multiple or nested if statements you can't do something like:</p>
+<div class="CodeRay">
+  <div class="code"><pre>if ($request_method = POST &amp;&amp; $http_cookie ~* &quot;CCCC=.+(?:;|$)&quot;)</pre></div>
+</div>
+
+<p>However, you can set variables and you can do if statements on variables so this can be rewritten:</p>
+<div class="CodeRay">
+  <div class="code"><pre>if ($request_method = POST) {
+    set $test  P;
+  }
+
+  if ($http_cookie ~* &quot;CCCC=.+(?:;|$)&quot; ) {
+    set $test  &quot;${test}C&quot;;
+  }
+
+  if ($test = PC) {
+    #rewrite rule goes here.
+  }</pre></div>
+</div>
+
+<p>As you can use regular expressions on if statements this method allows you to do both &amp;&amp; and | checks.</p>
+<p>The example is taken from a hidden away example on the <a href="http://wiki.nginx.org/NginxRewriteMultiCondExample">wiki</a> but as it took me ages to find hopefully it will help you to.</p>
+<div class="blogger-post-footer"><img class="posterous_download_image" src="https://blogger.googleusercontent.com/tracker/7305662280706773984-2211604193438918013?l=www.rosslawley.co.uk" height="1" alt="" width="1" /></div>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>

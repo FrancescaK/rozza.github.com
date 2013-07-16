@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Locking Django management commands</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/archive/old/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/archive/old/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/">Ross Lawley</a></h1>
+            </div>
+
+                <h2>Locking Django management commands</h2>
+<p class="meta">18 Oct 2010</p>
+
+<div class="post">
+<p>I have a number of management commands running via cron and sometimes they take longer to run than the time imbetween jobs.  I don't want two jobs runningin parallel so when I saw that <a href="http://github.com/jtauber/django-notification/">Django Notification</a>&nbsp;used lock files in its emission of notices, I wanted to apply that cleanly to my management commands.</p>
+<p>So I created a decorator that would add a locking file based on the current module file name, which would ensure that there is only ever one process running at any time.  Then all I have to do is simply decorate my management commands by applying the decorator to the handle method like so:</p>
+<p><code> </code></p>
+<div class="CodeRay">
+  <div class="code"><pre># load the deocrator
+from decorators import handle_lock
+
+class Command(BaseCommand):
+    help = &quot;Regular Management command.&quot;
+
+    # decorate the handle
+    @handle_lock
+    def handle(self, *args, **options):
+        # Do your stuff here</pre></div>
+</div>
+
+<p><code> </code></p>
+<p>&nbsp;</p>
+<p>And volia the management command will only ever run in single file.  Go ahead and try it out:</p>
+<p>&nbsp;</p>
+<p><script src="https://gist.github.com/631953.js?file=decorator.py"></script></p>
+
+</div>
+
+
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>
