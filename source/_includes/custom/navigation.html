@@ -1,5 +1,5 @@
 <ul class="nav">
-	<li class="title"><h1 id="title"><a href="/">Ross Lawley</a></h1></li>
+	{% if page.title %}<li><h1><a href="/">{{ site.author }}</a></h1></li>{% endif %}
     {% for link in site.navigation %}
         <li {% if page.url == link.url %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.text }}</a></li>
     {% endfor %}
