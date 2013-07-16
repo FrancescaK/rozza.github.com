@@ -1,0 +1,6 @@
+<ul class="nav">
+	<li class="title"><h1 id="title"><a href="/">Ross Lawley</a></h1></li>
+    {% for link in site.navigation %}
+        <li {% if page.url == link.url %}class="active"{% endif %}><a href="{{ link.url }}">{{ link.text }}</a></li>
+    {% endfor %}
+</ul>

@@ -19,7 +19,7 @@ Last week my Mac book ran out of space again, this had been going on for some ti
 I was spending an ever increasing amount of much time hunting down rogue space invaders on my small 120gb hard drive.  So **something** had to be done.
 
 <p class="center">
-	<strong>In times like this there is only one solution!</strong>
+	<strong>In times like this there is only one solution!</strong><br>
 	<img src="/images/2013/mrragequit.jpg" title="Original image: http://leviathyn.com/games/news/2012/06/14/your-worst-rage-quit-moment/" /> <br>
 	<small> Source: <a href="http://leviathyn.com/games/news/2012/06/14/your-worst-rage-quit-moment/"/>http://leviathyn.com/games/news/2012/06/14/your-worst-rage-quit-moment/</a></small>
 </p>

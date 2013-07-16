@@ -2,7 +2,7 @@
 layout: post
 title: "Using MongoDB to find the most popular pub names!"
 date: 2013-06-12 14:50
-published: true
+published: false
 comments: true
 categories:
 - mongodb
@@ -25,9 +25,10 @@ words in text" and as the [aggregation framework](http://docs.mongodb.org/manual
 
 ### What are us Brits focused on?
 
-Two things immediately sprang to mind - **weather** and **beer**.
+Two things immediately sprang to mind: **weather** and **beer**.
 <!--more-->
-Taking inspiration from Al Murray <small>- the pub landlord</small> and
+
+Being a fan of Al Murray - the pub landlord and
 knowing that I could get some great open data including a wealth of information
 on pubs from [open street map](http://www.openstreetmap.org/), I opted to focus
 on something close to my heart: **beer**.  But what to aggregate?
@@ -47,30 +48,105 @@ demo app doesn't have data for the whole world - its surely possible to do.
 The [Overpass-api](http://www.overpass-api.de) provides a xapi interface for
 osm data.  All I needed was anything tagged with `amenity=pub` within in the
 bounds of the UK.  Once I had an osm file I used the imposm python library to
-parse, convert to GeoJSON, load to MongoDB and clean up the data.  See the
-[osm2mongo.py](https://github.com/rozza/pubnames) if you want to know more.
+parse, convert to GeoJSON, load to MongoDB and clean up the data.  The resulting
+document looks like:
 
-## Top five pub names
-
-It turns out finding the most popular pub name is simple:
-
-<pre><code>
-   db.pubs.aggregate([
-    {"$group":
-       {"_id": "$name",
-        "value": {"$sum": 1}
-       }
-    },
-    {"$sort": {"value": -1}},
-    {"$limit": 5}
-]);
+<pre class="line-numbers language-javascript">
+<code>{
+  "_id" : 451152,
+  "amenity" : "pub",
+  "name" : "The Dignity",
+  "addr:housenumber" : "363",
+  "addr:street" : "Regents Park Road",
+  "addr:city" : "London",
+  "addr:postcode" : "N3 1DH",
+  "toilets" : "yes",
+  "toilets:access" : "customers",
+  "location" : {
+      "type" : "Point",
+      "coordinates" : [-0.1945732, 51.6008172]
+  }
+}
 </code></pre>
 
+See the [osm2mongo.py](https://github.com/rozza/pubnames) if you want to know
+more.
+
+## Top pub names
+
+<p class="center">
+  <img src="/images/2013/pubs_wordle.png"<br>
+</p>
+
+It turns out finding the most popular pub names is simple with the aggregation
+framework.  Just group by the name and then sum up all the occurrences of that
+name.  To get the top five most popular pub names we sort by the summed value
+and then limit to 5:
+
+<div class="row-fluid">
+  <div class="span6">
+<pre class="line-numbers language-javascript">
+<code>db.pubs.aggregate([
+  {"$group":
+     {"_id": "$name",
+      "value": {"$sum": 1}
+     }
+  },
+  {"$sort": {"value": -1}},
+  {"$limit": 5}
+]);
+</code></pre>
+  </div>
+  <div class="span6">
 For the whole of the UK this returns:
 
-1. The Red Lion
-2. The Royal Oak
-3. The Crown
-4. The White Hart
-5. The White Horse
+<ol>
+<li>The Red Lion</li>
+<li>The Royal Oak</li>
+<li>The Crown</li>
+<li>The White Hart</li>
+<li>The White Horse</li>
+</ol>
+  </div>
+</div>
+
+## Top pub names near you
+
+At MongoDB London I did the top pub names near the conference, showing off some
+of the geo functionality that is available in MongoDB 2.4.  Here I'm find all
+pubs within ~2miles of the venue:
+
+<pre class="line-numbers language-javascript">
+<code>db.pubs.aggregate([
+    { "$match" : { "location":
+                 { "$within":
+                   { "$centerSphere": [[-0.12, 51.516], 2 / 3959] }}}
+    },
+    { "$group" :
+       { "_id" : "$name",
+         "value" : { "$sum" : 1 } }
+    },
+    { "$sort" : { "value" : -1 } },
+    { "$limit" : 5 }
+  ]);
+</code></pre>
+
+
+# What about where I live?
+
+I decided to make it a bit more dynamic and playing with d3.js and leaflet.js,
+so I hacked together a website that will create a wordle for pub names near you!
+
+* two caveats:
+1. I only got the **UK** pub names from open street map and
+2. Its on free hosting so may take some time to load!
+
+
+
+## Cheers
+
+<p class="center">
+  <img src="/images/2013/almurray.jpg" title="Original image: http://www.flickr.com/photos/bradfordtheatres/3063899946" /> <br>
+  <small> Source: <a href="http://www.flickr.com/photos/bradfordtheatres/3063899946"/>http://www.flickr.com/photos/bradfordtheatres/3063899946</a></small>
+</p>
 

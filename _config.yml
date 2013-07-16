@@ -31,6 +31,7 @@ root: /
 source: source
 destination: public
 permalink: /:year/:month/:title/
+relative_permalinks: true
 plugins: plugins
 code_dir: downloads/code
 category_dir: categories
@@ -86,8 +87,8 @@ googleplus_user:
 googleplus_hidden: false
 
 # Pinboard
-pinboard_user: rozza
-pinboard_count: 3
+pinboard_user:
+pinboard_count:
 
 # Delicious
 delicious_user:
@@ -102,3 +103,5 @@ google_analytics_tracking_id: UA-716284-3
 
 # Facebook Like
 facebook_like: false
+
+linkedin_user: rosslawley
