@@ -13,14 +13,12 @@ categories:
 ---
 
 Earlier in the year I gave a talk at [MongoDB London](http://www.10gen.com/events/mongodb-london-2013)
-about the different aggregation options with MongoDB.  The talk was well
-received, so I promised to post more about it, and when recently it came up again
-in conversation at a usergroup, I thought it was high time to made good on that
-promise!
+about the different aggregation options with MongoDB.  The topic recently came up again
+in conversation at a user group, so I thought it warranted a blog post. 
 
 ## Gathering ideas for the talk
 
-I wanted to give a more interesting aggregation talk than the bog standard
+I wanted to give a more interesting aggregation talk than the standard
 "counting words in text", and as the [aggregation framework](http://docs.mongodb.org/manual/core/aggregation/) gained shiny [2dsphere geo](http://docs.mongodb.org/manual/core/2dsphere/) support in
 [2.4](http://docs.mongodb.org/manual/release-notes/2.4/#new-geospatial-indexes-with-geojson-and-improved-spherical-geometry), I figured I'd use that. I just needed a topic...
 
@@ -37,7 +35,7 @@ But what to aggregate about beer? Then I remembered an old pub quiz favourite...
 I know there is some great open data, including a wealth of information
 on pubs available from the awesome [open street map](http://www.openstreetmap.org/)
 project.  I just need to get at it and happily the [Overpass-api](http://www.overpass-api.de)
-provides a simple "xapi" interface for osm data.
+provides a simple "xapi" interface for OSM data.
 All I needed was anything tagged with `amenity=pub` within in the
 bounds of the UK and with their xapi interface this is as simple as a wget:
 `http://www.overpass-api.de/api/xapi?*[amenity=pub][bbox=-10.5,49.78,1.78,59]`
@@ -73,7 +71,7 @@ available on github: [osm2mongo.py](https://github.com/rozza/pubnames/blob/maste
 
 ## Top pub names
 
-It turns out finding the most popular pub names is ridiculously simple with the
+It turns out finding the most popular pub names is very simple with the
 aggregation framework.  Just group by the name and then sum up all the occurrences.
 To get the top five most popular pub names we sort by the summed value and then
 limit to 5:
